@@ -7,19 +7,18 @@ public class Solver {
       Queue<Puzzle> q = new LinkedList<>();
       
       q.add(initialPuzz);
-      
+      int counter=0;
       while (!q.isEmpty()){
         
         Puzzle puzzle=q.remove();
-
+        if (counter<10)
         if (puzzle.isSolved()){
 
           return puzzle;
-        
-        } else{
-
-          int last_move = puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
-          if (last_move != 1){
+        }
+        else{
+          int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
+          if (last_move!=1){
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_down()){
                 q.add(toAdd);
@@ -27,29 +26,25 @@ public class Solver {
             }
           }
           if (last_move!=0){
-            Puzzle toAdd = Solver.copy(puzzle);
-            if (toAdd.move_up()){
-                q.add(toAdd);
-                System.out.println(toAdd);
+            Puzzle toAdd1 = Solver.copy(puzzle);
+            if (toAdd1.move_up()){
+                q.add(toAdd1);
             }
 
           }
           if (last_move!=3){
-            Puzzle toAdd = Solver.copy(puzzle);
-            if (toAdd.move_right()){
-                q.add(toAdd);
-                System.out.println(toAdd);
+            Puzzle toAdd2 = Solver.copy(puzzle);
+            if (toAdd2.move_right()){
+                q.add(toAdd2);
             }
           }
           if (last_move!=2){
-            Puzzle toAdd = Solver.copy(puzzle);
-            if (toAdd.move_left()){
-                q.add(toAdd);
-                System.out.println(toAdd);
+            Puzzle toAdd3 = Solver.copy(puzzle);
+            if (toAdd3.move_left()){
+                q.add(toAdd3);
             }
           }
         }
-
 
       }
 
@@ -59,6 +54,9 @@ public class Solver {
 
     public static Puzzle copy(Puzzle puzzle){
       Puzzle newPuzz=new Puzzle(puzzle.puzzle.length,puzzle.puzzle[0].length);
+      newPuzz.open_c=puzzle.open_c;
+      newPuzz.open_r=puzzle.open_r;
+
       for (int i=0;i<puzzle.prevMoves.size();i++){
         newPuzz.prevMoves.add(puzzle.prevMoves.get(i));
       }

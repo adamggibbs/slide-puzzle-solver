@@ -13,7 +13,6 @@ public class Solver {
         Puzzle puzzle=q.remove();
         if (counter<10)
         if (puzzle.isSolved()){
-
           return puzzle;
         }
         else{
@@ -49,6 +48,20 @@ public class Solver {
 
       return initialPuzz;
     
+    }
+
+    public static void printSolution(Puzzle puzzle){
+      if(!puzzle.isSolved()){
+        System.out.println("Puzzle is not solved.");
+      } else if(puzzle.prevMoves.isEmpty()){
+        System.out.println("Puzzle has not been shuffled");
+      } else {
+
+        System.out.println("It took " + (puzzle.prevMoves.size()-1) + " moves to solve the puzzle.");
+        System.out.println("The moves were: ");
+        puzzle.printPrevMoves();
+
+      }
     }
 
     public static Puzzle copy(Puzzle puzzle){

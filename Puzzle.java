@@ -6,6 +6,8 @@ public class Puzzle{
     // store index of row and col of open space
     int open_r = 0;
     int open_c = 0;
+    // store last move
+    int last_move = 0;
 
     // Constructor
     public Puzzle(int width, int height){
@@ -25,18 +27,6 @@ public class Puzzle{
     // return false if move isn't possible
     // performs move and returns true if possible
 
-    public boolean move_up(){
-
-        if(open_r == 0){
-            return false;
-        } else {
-            puzzle[open_r][open_c] = puzzle[open_r-1][open_c];
-            puzzle[open_r-1][open_c] = 0;
-            open_r -= 1;
-            return true;
-        }
-    }
-
     public boolean move_down(){
 
         if(open_r == puzzle.length-1){
@@ -45,6 +35,33 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r+1][open_c];
             puzzle[open_r+1][open_c] = 0;
             open_r += 1;
+            last_move = 0;
+            return true;
+        }
+    }
+
+    public boolean move_up(){
+
+        if(open_r == 0){
+            return false;
+        } else {
+            puzzle[open_r][open_c] = puzzle[open_r-1][open_c];
+            puzzle[open_r-1][open_c] = 0;
+            open_r -= 1;
+            last_move = 1;
+            return true;
+        }
+    }    
+
+    public boolean move_right(){
+
+        if(open_c == puzzle[0].length-1){
+            return false;
+        } else {
+            puzzle[open_r][open_c] = puzzle[open_r][open_c+1];
+            puzzle[open_r][open_c+1] = 0;
+            open_c += 1;
+            last_move = 2;
             return true;
         }
     }
@@ -57,18 +74,7 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r][open_c-1];
             puzzle[open_r][open_c-1] = 0;
             open_c -= 1;
-            return true;
-        }
-    }
-
-    public boolean move_right(){
-
-        if(open_c == puzzle[0].length-1){
-            return false;
-        } else {
-            puzzle[open_r][open_c] = puzzle[open_r][open_c+1];
-            puzzle[open_r][open_c+1] = 0;
-            open_c += 1;
+            last_move = 3;
             return true;
         }
     }

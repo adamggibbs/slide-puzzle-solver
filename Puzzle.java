@@ -13,7 +13,7 @@ public class Puzzle{
 
     // Constructor
     public Puzzle(int width, int height){
-
+        prevMoves.add(0);
         puzzle = new int[height][width];
 
         int count = 0;
@@ -110,7 +110,7 @@ public class Puzzle{
         }
 
         prevMoves=new ArrayList<>();
-
+        prevMoves.add(0);
     }
 
     // isSolved()

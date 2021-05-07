@@ -22,7 +22,6 @@ public class Solver {
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_down()){
                 q.add(toAdd);
-                System.out.println(toAdd);
             }
           }
           if (last_move!=0){

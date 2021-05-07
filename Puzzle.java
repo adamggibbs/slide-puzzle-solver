@@ -90,7 +90,7 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 20;
+        int shuffles = 30;
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);
@@ -131,6 +131,51 @@ public class Puzzle{
         }
 
         return true;
+
+    }
+
+    // print()
+
+    public void print(){
+        System.out.println(this);
+    }
+
+    // printPrevMoves()
+
+    public void printPrevMoves(){
+
+        if(prevMoves.size() == 0){
+            System.out.println("There are no previous moves.");
+        }
+
+        System.out.println("There are " + this.prevMoves.size() + " previous moves:");
+
+        System.out.print("[" + getDir(this.prevMoves.get(0)) + ", ");
+        for(int i = 1; i < this.prevMoves.size()-1; i++){
+            if(i % 20 == 0){
+                String dir = getDir(this.prevMoves.get(i));
+                System.out.println(dir + ",");
+            } else {
+                String dir = getDir(this.prevMoves.get(i));
+                System.out.print(dir + ", ");
+            }
+        }
+        System.out.println(getDir(this.prevMoves.get(prevMoves.size()-1)) + "]");
+    }
+
+    private String getDir(int move){
+
+        String dir = "";
+        if(move == 0){
+            dir = "up";
+        } else if(move == 1){
+            dir = "down";
+        } else if(move == 2){
+            dir = "right";
+        } else if(move ==3){
+            dir = "left";
+        }
+        return dir;
 
     }
 

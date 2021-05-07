@@ -5,8 +5,8 @@ public class Puzzle{
     // puzzle itself
     int[][] puzzle;
     // store index of row and col of open space
-    int open_r = 0;
-    int open_c = 0;
+    int open_r;
+    int open_c;
 
     //stores prvious moves to get to current state
     ArrayList<Integer> prevMoves = new ArrayList<>();
@@ -15,6 +15,8 @@ public class Puzzle{
     public Puzzle(int width, int height){
         prevMoves.add(0);
         puzzle = new int[height][width];
+        open_c=0;
+        open_r=0;
 
         int count = 0;
         for(int i = 0; i < height; i++){
@@ -88,7 +90,7 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 1000000;
+        int shuffles = 20;
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);
@@ -104,13 +106,13 @@ public class Puzzle{
             }
         }
 
-        for(int i = 0; i < 9; i++){
-            this.move_right();
-            this.move_down();
-        }
+        // for(int i = 0; i < 9; i++){
+        //     this.move_right();
+        //     this.move_down();
+        // }
 
         prevMoves=new ArrayList<>();
-        prevMoves.add(0);
+        prevMoves.add(1);
     }
 
     // isSolved()

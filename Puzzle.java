@@ -1,6 +1,8 @@
 
 public class Puzzle{
 
+    // hey ben!
+
     // puzzle itself
     int[][] puzzle;
     // store index of row and col of open space

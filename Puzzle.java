@@ -102,6 +102,8 @@ public class Puzzle{
             this.move_right();
             this.move_down();
         }
+
+        
         
     }
 

@@ -7,7 +7,6 @@ public class Puzzle{
     int open_r = 0;
     int open_c = 0;
 
-
     // Constructor
     public Puzzle(int width, int height){
 
@@ -91,7 +90,31 @@ public class Puzzle{
                 this.move_left();
             }
         }
+
+        for(int i = 0; i < 9; i++){
+            this.move_right();
+            this.move_down();
+        }
         
+    }
+
+    // isSolved()
+
+    public boolean isSolved(){
+
+        int last_piece = -1;
+        for(int i = 0; i < puzzle.length; i++){
+            for(int j = 0; j < puzzle[0].length; j++){
+                if(puzzle[i][j] <= last_piece){
+                    return false;
+                } else {
+                    last_piece = puzzle[i][j];
+                }
+            }
+        }
+        
+        return true;
+    
     }
 
     // toString() method to print puzzle

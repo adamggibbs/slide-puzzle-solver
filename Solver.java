@@ -3,27 +3,34 @@ import java.util.*;
 public class Solver {
 
     public static Puzzle solve(Puzzle initialPuzz){
+
       Queue<Puzzle> q = new LinkedList<>();
+      
       q.add(initialPuzz);
-      System.out.println(initialPuzz);
+      
       while (!q.isEmpty()){
+        
         Puzzle puzzle=q.remove();
+
         if (puzzle.isSolved()){
+
           return puzzle;
-        }
-        else{
-          //System.out.println(puzzle.prevMoves.size());
-          int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
-          if (last_move!=1){
+        
+        } else{
+
+          int last_move = puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
+          if (last_move != 1){
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_down()){
                 q.add(toAdd);
+                System.out.println(toAdd);
             }
           }
           if (last_move!=0){
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_up()){
                 q.add(toAdd);
+                System.out.println(toAdd);
             }
 
           }
@@ -31,20 +38,23 @@ public class Solver {
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_right()){
                 q.add(toAdd);
+                System.out.println(toAdd);
             }
           }
           if (last_move!=2){
             Puzzle toAdd = Solver.copy(puzzle);
             if (toAdd.move_left()){
-              System.out.println("Test");
                 q.add(toAdd);
+                System.out.println(toAdd);
             }
           }
         }
 
 
       }
+
       return initialPuzz;
+    
     }
 
     public static Puzzle copy(Puzzle puzzle){

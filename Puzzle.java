@@ -1,15 +1,15 @@
+import java.util.*;
 
 public class Puzzle{
-
-    // hey ben!
 
     // puzzle itself
     int[][] puzzle;
     // store index of row and col of open space
     int open_r = 0;
     int open_c = 0;
-    // store last move
-    int last_move = 0;
+
+    //stores prvious moves to get to current state
+    ArrayList<Integer> prevMoves = new ArrayList<>();
 
     // Constructor
     public Puzzle(int width, int height){
@@ -25,6 +25,12 @@ public class Puzzle{
         }
     }
 
+    // constructor 2
+    public Puzzle(Puzzle initialPuzz){
+      puzzle = initialPuzz.puzzle;
+
+    }
+
     // Move Methods, refers to direction open space moves
     // return false if move isn't possible
     // performs move and returns true if possible
@@ -36,7 +42,7 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r+1][open_c];
             puzzle[open_r+1][open_c] = 0;
             open_r += 1;
-            last_move = 0;
+            prevMoves.add(0);
             return true;
         }
     }
@@ -49,10 +55,10 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r-1][open_c];
             puzzle[open_r-1][open_c] = 0;
             open_r -= 1;
-            last_move = 1;
+            prevMoves.add(1);
             return true;
         }
-    }    
+    }
 
     public boolean move_right(){
 
@@ -62,7 +68,7 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r][open_c+1];
             puzzle[open_r][open_c+1] = 0;
             open_c += 1;
-            last_move = 2;
+            prevMoves.add(2);
             return true;
         }
     }
@@ -75,7 +81,7 @@ public class Puzzle{
             puzzle[open_r][open_c] = puzzle[open_r][open_c-1];
             puzzle[open_r][open_c-1] = 0;
             open_c -= 1;
-            last_move = 3;
+            prevMoves.add(3);
             return true;
         }
     }
@@ -102,7 +108,9 @@ public class Puzzle{
             this.move_right();
             this.move_down();
         }
-        
+
+        prevMoves=new ArrayList<>();
+
     }
 
     // isSolved()
@@ -119,9 +127,9 @@ public class Puzzle{
                 }
             }
         }
-        
+
         return true;
-    
+
     }
 
     // toString() method to print puzzle

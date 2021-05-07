@@ -26,7 +26,6 @@ public class Puzzle{
     // Move Methods, refers to direction open space moves
     // return false if move isn't possible
     // performs move and returns true if possible
-
     public boolean move_down(){
 
         if(open_r == puzzle.length-1){

@@ -89,7 +89,7 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 25;
+        int shuffles = 40;
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);
@@ -164,9 +164,9 @@ public class Puzzle{
 
         String dir = "";
         if(move == 0){
-            dir = "up";
-        } else if(move == 1){
             dir = "down";
+        } else if(move == 1){
+            dir = "up";
         } else if(move == 2){
             dir = "right";
         } else if(move == 3){

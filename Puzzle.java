@@ -13,7 +13,6 @@ public class Puzzle{
 
     // Constructor
     public Puzzle(int width, int height){
-        prevMoves.add(0);
         puzzle = new int[height][width];
         open_c=0;
         open_r=0;
@@ -90,7 +89,7 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 20;
+        int shuffles = 10;
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);
@@ -112,7 +111,7 @@ public class Puzzle{
         // }
 
         prevMoves=new ArrayList<>();
-        prevMoves.add(1);
+        prevMoves.add(-1);
     }
 
     // isSolved()

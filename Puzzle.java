@@ -89,7 +89,33 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 40;
+        int shuffles = 30;
+
+        for(int i = 0; i < shuffles; i++){
+            int move = (int)(Math.random()*4);
+
+            if(move == 0){
+                this.move_down();
+            } else if(move == 1){
+                this.move_up();
+            } else if(move == 2){
+                this.move_right();
+            } else if(move == 3){
+                this.move_left();
+            }
+        }
+
+        // for(int i = 0; i < 9; i++){
+        //     this.move_right();
+        //     this.move_down();
+        // }
+
+        prevMoves=new ArrayList<>();
+        prevMoves.add(-1);
+    }
+
+    // shuffle() overload to allow shuffles to be given
+    public void shuffle(int shuffles){
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);

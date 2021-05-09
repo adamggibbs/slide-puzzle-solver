@@ -65,7 +65,7 @@ public class Solver {
     }
 
     public static Puzzle copy(Puzzle puzzle){
-      Puzzle newPuzz=new Puzzle(puzzle.puzzle.length,puzzle.puzzle[0].length);
+      Puzzle newPuzz=new Puzzle(puzzle.puzzle[0].length, puzzle.puzzle.length);
       newPuzz.open_c=puzzle.open_c;
       newPuzz.open_r=puzzle.open_r;
 

@@ -26,12 +26,6 @@ public class Puzzle{
         }
     }
 
-    // constructor 2
-    public Puzzle(Puzzle initialPuzz){
-      puzzle = initialPuzz.puzzle;
-
-    }
-
     // Move Methods, refers to direction open space moves
     // return false if move isn't possible
     // performs move and returns true if possible

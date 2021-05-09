@@ -11,11 +11,20 @@ public class Main {
                 if(args.length == 1 || args.length > 2){
                         System.err.println("Incorrect number of command line arguments [" + args.length + "]");
                         System.err.println("\tPlease enter no command line arguments to use defualt puzzle dimensions, "); 
-                        System.err.println("\tor enter 2 command line arguments (n and m) to specify a n x m puzzle");
+                        System.err.println("\tor enter 2 integers as command line arguments (n and m) to specify a n x m puzzle.");
                         System.exit(1);
                 }
-                n = Integer.parseInt(args[0]);
-                m = Integer.parseInt(args[1]);
+
+                try{
+                        n = Integer.parseInt(args[0]);
+                        m = Integer.parseInt(args[1]);
+                } catch(NumberFormatException e){
+                        System.err.println("Command line arguments passed are not integers.");
+                        System.err.println("\tPlease enter two integers to specify puzzle dimensions, ");   
+                        System.err.println("\tor enter no command line arguments to use default puzzle dimensions.");  
+                        System.exit(2);         
+                }
+                
         }
         
         

@@ -29,6 +29,7 @@ public class Puzzle{
     // Move Methods, refers to direction open space moves
     // return false if move isn't possible
     // performs move and returns true if possible
+    //move_down
     public boolean move_down(){
 
         if(open_r == puzzle.length-1){
@@ -42,6 +43,7 @@ public class Puzzle{
         }
     }
 
+    //move_up
     public boolean move_up(){
 
         if(open_r == 0){
@@ -55,6 +57,7 @@ public class Puzzle{
         }
     }
 
+    //move_right
     public boolean move_right(){
 
         if(open_c == puzzle[0].length-1){
@@ -68,6 +71,7 @@ public class Puzzle{
         }
     }
 
+    //move_left
     public boolean move_left(){
 
         if(open_c == 0){
@@ -83,7 +87,7 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 30;
+        int shuffles = 100;
 
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);

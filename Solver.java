@@ -2,14 +2,16 @@ import java.util.*;
 
 public class Solver {
 
+    //Uses a BFS of all possible puzzle states to find
+    //the shortest possible moves to reach a solved puzzle
     public static Puzzle solve(Puzzle initialPuzz){
 
       Queue<Puzzle> q = new LinkedList<>();
-      
+
       q.add(initialPuzz);
       int counter=0;
       while (!q.isEmpty()){
-        
+
         Puzzle puzzle=q.remove();
         if (counter<10)
         if (puzzle.isSolved()){
@@ -47,9 +49,11 @@ public class Solver {
       }
 
       return initialPuzz;
-    
+
     }
 
+    //Prints the solved Puzzle and the moves using
+    //the list of moves stored in each puzzle state
     public static void printSolution(Puzzle puzzle){
       if(!puzzle.isSolved()){
         System.out.println("Puzzle is not solved.");
@@ -64,6 +68,8 @@ public class Solver {
       }
     }
 
+    //Creates a deep copy of the current puzzle to be
+    //added to the queue for the BFS
     public static Puzzle copy(Puzzle puzzle){
       Puzzle newPuzz=new Puzzle(puzzle.puzzle[0].length, puzzle.puzzle.length);
       newPuzz.open_c=puzzle.open_c;

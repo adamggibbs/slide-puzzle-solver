@@ -52,6 +52,19 @@ public class Solver {
 
     }
 
+    public static Puzzle parallelSolve(Puzzle initialPuzz){
+      int nThreads = Runtime.getRuntime().availableProcessors();
+      ExecutorService pool = Executors.newFixedThreadPool(nThreads);
+
+      Atomic Integer minSolution = Integer.MAX_VALUE;
+      Atmoic boolean solved = false;
+
+      // need to finish code here to create and execute tasks
+
+
+
+    }
+
     //Prints the solved Puzzle and the moves using
     //the list of moves stored in each puzzle state
     public static void printSolution(Puzzle puzzle){

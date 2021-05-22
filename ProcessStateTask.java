@@ -6,11 +6,11 @@ public class ProcessStateTask implements Runnable{
 
     Puzzle puzzle;
     Queue<Puzzle> sharedQueue;
-    AtomicInteger minSolution;
-    AtomicReference<Puzzle> solved;
+    int minSolution;
+    Puzzle solved;
     ReentrantLock l;
 
-    public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, AtomicInteger minSolution, AtomicReference<Puzzle> solved){
+    public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, int minSolution, Puzzle solved){
         this.puzzle = puzzle;
         this.sharedQueue = sharedQueue;
         this.minSolution = minSolution;
@@ -20,6 +20,8 @@ public class ProcessStateTask implements Runnable{
 
     public void run(){
             if (puzzle.isSolved()){
+
+                System.out.println("SOLVED");
 
                 // need to create a lock method for getting and changing the shortest solution
                 // I used a java implemented lock, I saw we use this until everything else is
@@ -33,12 +35,12 @@ public class ProcessStateTask implements Runnable{
                      * section and so we don't need to worry about concurrent
                      * modification of minSolution and solved
                      */ 
-
-                    int curr_min = minSolution.get();
-                    if(puzzle.prevMoves.size() < curr_min){
+                    System.out.println("IN LOCK");
+                    
+                    if(puzzle.prevMoves.size() < minSolution){
                         
-                        minSolution.compareAndSet(curr_min, puzzle.prevMoves.size());
-                        solved.set(puzzle);
+                        minSolution = puzzle.prevMoves.size();
+                        solved = puzzle;
 
                     }
                     
@@ -47,7 +49,7 @@ public class ProcessStateTask implements Runnable{
                 }
                 
 
-            } else if(minSolution.get() == -1 || ((puzzle.prevMoves.size()+1) < minSolution.get())){
+            } else if((puzzle.prevMoves.size()+1) < minSolution){
                 int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
                 if (last_move!=1){
                     Puzzle toAdd = Solver.copy(puzzle);

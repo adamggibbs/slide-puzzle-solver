@@ -61,10 +61,8 @@ public class Solver {
       int nThreads = Runtime.getRuntime().availableProcessors();
       ExecutorService pool = Executors.newFixedThreadPool(nThreads);
 
-      //AtomicInteger minSolution = new AtomicInteger(Integer.MAX_VALUE);
-      // AtomicReference<Puzzle> solved = null;
       int minSolution = Integer.MAX_VALUE;
-      Puzzle solved = null;
+      AtomicReference<Puzzle> solved = new AtomicReference<>();
 
 
       // need to finish code here to create and execute tasks
@@ -72,13 +70,9 @@ public class Solver {
 
       q.add(initialPuzz);
 
-      // CURRENT BUG: THE SOLVED VARIABLE IS NOT GETTING UPDATED 
-      // AND SEEN BY THREAD THAT RUNS THIS METHOD
-      // SO A SOLUTION IS FOUND AND IT IS STORED IN SOLVED
-      // BUT IT'S NOT UPDATED IN MEMORY FOR THIS THREAD
-
       // while we don't have a solution we have to keep looking
-      while (solved == null){
+      // PROBLEM: I THINK THIS READ OP IS WICKED SLOW
+      while (solved.get() == null){
         // only add a task if the queue isn't empty
         // have to do this cause queue will be empty while initial puzz
         // is being processed before task adds it's children
@@ -92,8 +86,6 @@ public class Solver {
           pool.execute(nextStateTask);
 
         }
-
-        //System.out.println(solved);
         
       }
 
@@ -103,7 +95,7 @@ public class Solver {
       // solved will have a puzzle
       // while loop cannot end until it isn't null
       // returns a solved puzzle
-      return solved;
+      return solved.get();
 
     }
 

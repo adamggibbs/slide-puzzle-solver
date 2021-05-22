@@ -39,20 +39,20 @@ public class Main {
 
 	// solve the puzzle
         long startTime = System.nanoTime();
-        Puzzle puzzle1 = Solver.parallelSolve(puzzle);
+        Puzzle puzzle1 = Solver.solve(puzzle);
         long endTime = System.nanoTime();
         puzzle1.print();
         Solver.printSolution(puzzle1);
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
         System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
 
-        // startTime = System.nanoTime();
-        // Puzzle puzzle2 = Solver.parallelSolve(puzzle);
-        // endTime = System.nanoTime();
-        // puzzle2.print();
-        // Solver.printSolution(puzzle2);
-        // duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        // System.out.println("It took prallel] " + (duration / 1000000) + "ms to solve.");
+        startTime = System.nanoTime();
+        Puzzle puzzle2 = Solver.parallelSolve(puzzle);
+        endTime = System.nanoTime();
+        puzzle2.print();
+        Solver.printSolution(puzzle2);
+        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
 
         // END OF CODE TESTING AND EXPLORATION CHUNK
 

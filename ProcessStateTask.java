@@ -7,10 +7,10 @@ public class ProcessStateTask implements Runnable{
     Puzzle puzzle;
     Queue<Puzzle> sharedQueue;
     int minSolution;
-    Puzzle solved;
+    AtomicReference<Puzzle> solved;
     ReentrantLock l;
 
-    public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, int minSolution, Puzzle solved){
+    public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, int minSolution, AtomicReference<Puzzle> solved){
         this.puzzle = puzzle;
         this.sharedQueue = sharedQueue;
         this.minSolution = minSolution;
@@ -21,26 +21,23 @@ public class ProcessStateTask implements Runnable{
     public void run(){
             if (puzzle.isSolved()){
 
-                System.out.println("SOLVED");
-
                 // need to create a lock method for getting and changing the shortest solution
                 // I used a java implemented lock, I saw we use this until everything else is
                 // working then we can try implementing our own
                 l.lock();
                 try {
 
-                    /* NOTE TO BEN & SCOTT: do we need minSolution and solved 
+                    /* NOTE TO BEN & SCOTT: do we need minSolution
                      * to be atomic since we're using a lock?
                      * with a lock only one thread can be in this critical
                      * section and so we don't need to worry about concurrent
-                     * modification of minSolution and solved
+                     * modification of minSolution
                      */ 
-                    System.out.println("IN LOCK");
                     
                     if(puzzle.prevMoves.size() < minSolution){
                         
                         minSolution = puzzle.prevMoves.size();
-                        solved = puzzle;
+                        solved.set(puzzle);
 
                     }
                     

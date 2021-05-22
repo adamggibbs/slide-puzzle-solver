@@ -1,4 +1,8 @@
-import java.util.*;
+import java.util.concurrent.atomic.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Solver {
 
@@ -53,15 +57,41 @@ public class Solver {
     }
 
     public static Puzzle parallelSolve(Puzzle initialPuzz){
+
       int nThreads = Runtime.getRuntime().availableProcessors();
       ExecutorService pool = Executors.newFixedThreadPool(nThreads);
 
-      Atomic Integer minSolution = Integer.MAX_VALUE;
-      Atmoic boolean solved = false;
+      AtomicInteger minSolution = new AtomicInteger(Integer.MAX_VALUE);
+      AtomicReference<Puzzle> solved = null;
 
       // need to finish code here to create and execute tasks
+      ConcurrentLinkedQueue<Puzzle> q = new ConcurrentLinkedQueue<Puzzle>();
 
+      q.add(initialPuzz);
 
+      // while we don't have a solution we have to keep looking
+      while (solved != null){
+        // only add a task if the queue isn't empty
+        // have to do this cause queue will be empty while initial puzz
+        // is being processed before task adds it's children
+        if(!q.isEmpty()){
+
+          // Will it make a difference if we create this variable, then
+          // pass it to the task
+          // or if we call q.remove() as a parameter
+          Puzzle nextState = q.remove();
+          ProcessStateTask nextStateTask = new ProcessStateTask(nextState, q, minSolution, solved);
+          // ProcessStateTask nextStateTask = new ProcessStateTask(q.remove(), q, minSolution, solved);
+          pool.execute(nextStateTask);
+
+        }
+        
+      }
+
+      // solved will have a puzzle
+      // while loop cannot end until it isn't null
+      // returns a solved puzzle
+      return solved.get();
 
     }
 

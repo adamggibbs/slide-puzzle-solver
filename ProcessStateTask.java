@@ -1,5 +1,6 @@
 import java.util.Queue;
 import java.util.concurrent.atomic.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ProcessStateTask implements Runnable{
 
@@ -7,19 +8,23 @@ public class ProcessStateTask implements Runnable{
     Queue<Puzzle> sharedQueue;
     AtomicInteger minSolution;
     AtomicReference<Puzzle> solved;
+    ReentrantLock l;
 
     public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, AtomicInteger minSolution, AtomicReference<Puzzle> solved){
         this.puzzle = puzzle;
         this.sharedQueue = sharedQueue;
         this.minSolution = minSolution;
         this.solved = solved;
+        l = new ReentrantLock();
     }
 
     public void run(){
             if (puzzle.isSolved()){
 
                 // need to create a lock method for getting and changing the shortest solution
-                lock();
+                // I used a java implemented lock, I saw we use this until everything else is
+                // working then we can try implementing our own
+                l.lock();
                 try {
 
                     /* NOTE TO BEN & SCOTT: do we need minSolution and solved 
@@ -38,7 +43,7 @@ public class ProcessStateTask implements Runnable{
                     }
                     
                 } finally {
-                    unlock();
+                    l.unlock();
                 }
                 
 
@@ -82,6 +87,9 @@ public class ProcessStateTask implements Runnable{
     // but this is just ambition, otherwise defining
     // methods here are fine and we can always move 
     // them later
+
+    // another idea: let's use an already impelemented
+    // java lock until everything else is working
     
     
     // lock method will go here

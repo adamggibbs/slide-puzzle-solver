@@ -1,22 +1,25 @@
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.*;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ProcessStateTask implements Runnable{
+public class ProcessPruneStateTask implements Runnable{
 
     Puzzle puzzle;
     Queue<Puzzle> sharedQueue;
     int minSolution;
     AtomicReference<Puzzle> solved;
     AtomicBoolean isSolved;
+    ConcurrentHashMap<String, Boolean> usedPuzzes;
     ReentrantLock l;
 
-    public ProcessStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, int minSolution, AtomicReference<Puzzle> solved, AtomicBoolean isSolved){
+    public ProcessPruneStateTask(Puzzle puzzle, Queue<Puzzle> sharedQueue, int minSolution, AtomicReference<Puzzle> solved, AtomicBoolean isSolved, ConcurrentHashMap<String, Boolean> usedPuzzes){
         this.puzzle = puzzle;
         this.sharedQueue = sharedQueue;
         this.minSolution = minSolution;
         this.solved = solved;
         this.isSolved = isSolved;
+        this.usedPuzzes = usedPuzzes;
         l = new ReentrantLock();
     }
 
@@ -48,7 +51,7 @@ public class ProcessStateTask implements Runnable{
                 }
                 
 
-            } else if((puzzle.prevMoves.size()+1) < minSolution){
+            } else if((puzzle.prevMoves.size()+1) < minSolution && alreadyChecked(puzzle)){
                 int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
                 if (last_move!=1){
                     Puzzle toAdd = Solver.copy(puzzle);
@@ -76,6 +79,24 @@ public class ProcessStateTask implements Runnable{
                     }
                 }
             }
+
+    }
+
+    private boolean alreadyChecked(Puzzle toCheck){
+        int[][] puzz = toCheck.puzzle;
+        String id = "";
+        for(int i = 0; i < puzz.length; i++){
+            for(int j = 0; j < puzz[0].length; j++){
+                id += puzz[i][j];
+            }
+        }
+
+        if(usedPuzzes.containsKey(id)){
+            return true;
+        } else {
+            usedPuzzes.put(id, true);
+            return false;
+        }
 
     }
 

@@ -30,29 +30,37 @@ public class Main {
 
 	// create a n x m puzzle
         Puzzle puzzle = new Puzzle(n,m);
-
+        
         // CODE BEYOND HERE CAN BE ALTERED FOR TESTING AND EXPLORATION:
 
 	// shuffle the puzzle
-        puzzle.shuffle(40);
+        puzzle.shuffle(30);
         puzzle.print();
 
 	// solve the puzzle
         long startTime = System.nanoTime();
-        Puzzle puzzle1 = Solver.solve(puzzle);
+        Puzzle puzzle1 = Solver.parallelSolve(puzzle);
         long endTime = System.nanoTime();
         puzzle1.print();
         Solver.printSolution(puzzle1);
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
+        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
 
         startTime = System.nanoTime();
-        Puzzle puzzle2 = Solver.parallelSolve(puzzle);
+        Puzzle puzzle2 = Solver.parallelTreeSolve(puzzle);
         endTime = System.nanoTime();
         puzzle2.print();
         Solver.printSolution(puzzle2);
         duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
+        System.out.println("It took parallel tree " + (duration / 1000000) + "ms to solve.");
+
+        startTime = System.nanoTime();
+        Puzzle puzzle3 = Solver.solve(puzzle);
+        endTime = System.nanoTime();
+        puzzle3.print();
+        Solver.printSolution(puzzle3);
+        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
 
         // END OF CODE TESTING AND EXPLORATION CHUNK
 

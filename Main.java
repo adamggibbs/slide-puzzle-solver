@@ -1,4 +1,4 @@
-
+//Main Method
 public class Main {
     public static void main(String[] args){
 
@@ -30,7 +30,7 @@ public class Main {
 
 	// create a n x m puzzle
         Puzzle puzzle = new Puzzle(n,m);
-        
+
         // CODE BEYOND HERE CAN BE ALTERED FOR TESTING AND EXPLORATION:
 
 	// shuffle the puzzle

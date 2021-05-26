@@ -102,7 +102,7 @@ public class Solver {
 
     }
 
-    // PARALLEL SOLVE - NOT FUNCTIONAL
+    // PARALLEL PRUNED SOLVE - NOT FUNCTIONAL
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static Puzzle parallelPrunedSolve(Puzzle initialPuzz){
 
@@ -133,7 +133,6 @@ public class Solver {
         if(!q.isEmpty()){
           Puzzle nextState = q.remove();
           ProcessPruneStateTask nextStateTask = new ProcessPruneStateTask(nextState, q, minSolution, solved, isSolved, usedPuzzes);
-          // ProcessStateTask nextStateTask = new ProcessStateTask(q.remove(), q, minSolution, solved);
           pool.execute(nextStateTask);
         }
         

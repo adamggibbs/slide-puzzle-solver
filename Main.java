@@ -34,28 +34,28 @@ public class Main {
         // CODE BEYOND HERE CAN BE ALTERED FOR TESTING AND EXPLORATION:
 
 	// shuffle the puzzle
-        puzzle.shuffle(30);
+        puzzle.shuffle(100);
         puzzle.print();
 
 	// solve the puzzle
         long startTime = System.nanoTime();
-        Puzzle puzzle1 = Solver.parallelSolve(puzzle);
+        Puzzle puzzle1 = Solver.parallelTreeSolve(puzzle);
         long endTime = System.nanoTime();
         puzzle1.print();
         Solver.printSolution(puzzle1);
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
+        System.out.println("It took parallel tree " + (duration / 1000000) + "ms to solve.");
 
         startTime = System.nanoTime();
-        Puzzle puzzle2 = Solver.parallelTreeSolve(puzzle);
+        Puzzle puzzle2 = Solver.parallelSolve(puzzle);
         endTime = System.nanoTime();
         puzzle2.print();
         Solver.printSolution(puzzle2);
         duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took parallel tree " + (duration / 1000000) + "ms to solve.");
+        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
 
         startTime = System.nanoTime();
-        Puzzle puzzle3 = Solver.solve(puzzle);
+        Puzzle puzzle3 = Solver.parallelPrunedSolve(puzzle);
         endTime = System.nanoTime();
         puzzle3.print();
         Solver.printSolution(puzzle3);

@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ParallelSequentialTask implements Runnable{
 
     Puzzle initialPuzz;
-    AtomicBoolean isSolved; 
+    AtomicBoolean isSolved;
     AtomicReference<Puzzle> solved;
 
     public ParallelSequentialTask(Puzzle initialPuzz, AtomicBoolean isSolved, AtomicReference<Puzzle> solved){
@@ -26,10 +26,10 @@ public class ParallelSequentialTask implements Runnable{
     public static Puzzle solve(Puzzle initialPuzz){
 
         Queue<Puzzle> q = new LinkedList<>();
-  
+
         q.add(initialPuzz);
         while (!q.isEmpty() && !Thread.currentThread().isInterrupted()){
-            
+
           Puzzle puzzle=q.remove();
           if (puzzle.isSolved()){
             return puzzle;
@@ -47,7 +47,7 @@ public class ParallelSequentialTask implements Runnable{
               if (toAdd1.move_up()){
                   q.add(toAdd1);
               }
-  
+
             }
             if (last_move!=3){
               Puzzle toAdd2 = Solver.copy(puzzle);
@@ -62,11 +62,11 @@ public class ParallelSequentialTask implements Runnable{
               }
             }
           }
-  
+
         }
-  
+
         return initialPuzz;
-  
+
       }
-    
+
 }

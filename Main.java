@@ -109,6 +109,7 @@ public class Main {
 
 	// shuffle the puzzle
         puzzle.shuffle(shuffles);
+        System.out.println("An example puzzle:");
         puzzle.print();
 
 	// solve the puzzle

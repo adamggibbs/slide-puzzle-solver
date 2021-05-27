@@ -1,0 +1,676 @@
+This output file compares the pruning versions of sequential and of parallel with one combiner
+    solving 3x3 puzzles.
+
+NOTES: for simple solutions the sequential is faster, above 14 moves to solve, parallel is faster.
+       this makes sense because the time to make threads doesn't make up for the speed up of having threads
+       because the solution is quick to find.
+
+
+3  5  8
+4  2  0  
+6  1  7  
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, down, left, up, ]
+It took sequential 34ms to solve.
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, down, left, up, ]
+It took parallel 42ms to solve.
+-------------------------------------------------
+1  2  5  
+3  8  0  
+6  4  7  
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[left, down, right, up, up, left, left, ]
+It took sequential 8ms to solve.
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[left, down, right, up, up, left, left, ]
+It took parallel 10ms to solve.
+-------------------------------------------------
+1  5  8  
+3  2  0  
+6  4  7  
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, left, ]
+It took sequential 10ms to solve.
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, left, ]
+It took parallel 20ms to solve.
+-------------------------------------------------
+1  5  8  
+3  2  0  
+6  4  7  
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, left, ]
+It took sequential 12ms to solve.
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, down, right, up, up, left, left, ]
+It took parallel 19ms to solve.
+-------------------------------------------------
+1  0  2  
+3  4  5  
+6  7  8  
+
+calculating moves
+It took 1 moves to solve the puzzle.
+The moves were: 
+[left, ]
+It took sequential 0ms to solve.
+
+calculating moves
+It took 1 moves to solve the puzzle.
+The moves were: 
+[left, ]
+It took parallel 5ms to solve.
+-------------------------------------------------
+3  2  0  
+4  1  5  
+6  7  8  
+
+calculating moves
+It took 4 moves to solve the puzzle.
+The moves were: 
+[left, down, left, up, ]
+It took sequential 2ms to solve.
+
+calculating moves
+It took 4 moves to solve the puzzle.
+The moves were: 
+[left, down, left, up, ]
+It took parallel 6ms to solve.
+-------------------------------------------------
+1  8  4  
+3  2  0  
+6  5  7  
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[left, up, right, down, left, down, right, up, left, up, left, ]
+It took sequential 40ms to solve.
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[left, up, right, down, left, down, right, up, left, up, left, ]
+It took parallel 52ms to solve.
+-------------------------------------------------
+3  1  2  
+6  4  5  
+7  8  0  
+
+calculating moves
+It took 4 moves to solve the puzzle.
+The moves were: 
+[left, left, up, up, ]
+It took sequential 2ms to solve.
+
+calculating moves
+It took 4 moves to solve the puzzle.
+The moves were: 
+[left, left, up, up, ]
+It took parallel 6ms to solve.
+-------------------------------------------------
+1  4  2  
+3  5  0  
+6  7  8  
+
+calculating moves
+It took 3 moves to solve the puzzle.
+The moves were: 
+[left, up, left, ]
+It took sequential 1ms to solve.
+
+0  1  5  
+3  2  4  
+6  7  8  
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, down, right, up, left, left, ]
+It took sequential 7ms to solve.
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, down, right, up, left, left, ]
+It took parallel 8ms to solve.
+-------------------------------------------------
+3  7  1  
+4  0  2  
+6  8  5  
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, right, down, down, left, up, left, up, ]
+It took sequential 10ms to solve.
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, right, down, down, left, up, left, up, ]
+It took parallel 13ms to solve.
+-------------------------------------------------
+1  2  5  
+3  7  0  
+6  8  4  
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, up, left, left, ]
+It took sequential 7ms to solve.
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, up, left, left, ]
+It took parallel 10ms to solve.
+-------------------------------------------------
+1  5  4  
+3  2  8  
+6  7  0  
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, up, left, down, right, up, left, left, ]
+It took sequential 5ms to solve.
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, up, left, down, right, up, left, left, ]
+It took parallel 12ms to solve.
+-------------------------------------------------
+1  0  2  
+3  4  8  
+6  5  7  
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, left, up, left, ]
+It took sequential 4ms to solve.
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, left, up, left, ]
+It took parallel 10ms to solve.
+-------------------------------------------------
+3  2  5  
+4  0  1  
+6  7  8  
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up, ]
+It took sequential 7ms to solve.
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up, ]
+It took parallel 9ms to solve.
+-------------------------------------------------
+1  2  5  
+0  3  4  
+6  7  8  
+
+calculating moves
+It took 5 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, left, ]
+It took sequential 4ms to solve.
+
+calculating moves
+It took 5 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, left, ]
+It took parallel 7ms to solve.
+-------------------------------------------------
+2  5  0  
+3  7  8  
+4  1  6  
+
+calculating moves
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, down, right, up, up, left, down, left, down, right, up, left, up, ]
+It took sequential 1597ms to solve.
+
+calculating moves
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, down, right, up, up, left, down, left, down, right, up, left, up, ]
+It took parallel 1318ms to solve.
+-------------------------------------------------
+1  2  5  
+4  6  8  
+3  0  7  
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, right, right, up, up, left, left, ]
+It took sequential 12ms to solve.
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, left, down, right, right, up, up, left, left, ]
+It took parallel 19ms to solve.
+-------------------------------------------------
+4  3  1  
+6  7  0  
+8  5  2  
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were: 
+[down, left, left, up, up, right, right, down, down, left, up, left, up, ]
+It took sequential 93ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were: 
+[down, left, left, up, up, right, right, down, down, left, up, left, up, ]
+It took parallel 88ms to solve.
+-------------------------------------------------
+3  0  5  
+4  2  1  
+6  7  8  
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, down, left, up, ]
+It took sequential 7ms to solve.
+
+calculating moves
+It took 7 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, down, left, up, ]
+It took parallel 9ms to solve.
+-------------------------------------------------
+3  2  5  
+6  4  1  
+0  7  8  
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, right, right, up, left, down, left, up, ]
+It took sequential 9ms to solve.
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[up, right, right, up, left, down, left, up, ]
+It took parallel 12ms to solve.
+-------------------------------------------------
+1  7  2  
+8  5  0  
+3  6  4  
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, up, up, right, down, down, left, up, right, up, left, left, ]
+It took sequential 792ms to solve.
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, up, up, right, down, down, left, up, right, up, left, left, ]
+It took parallel 732ms to solve.
+-------------------------------------------------
+3  1  2  
+6  7  5  
+8  4  0  
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[up, left, down, left, up, right, right, down, left, up, left, up, ]
+It took sequential 45ms to solve.
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[up, left, down, left, up, right, right, down, left, up, left, up, ]
+It took parallel 53ms to solve.
+-------------------------------------------------
+0  3  1  
+4  5  2  
+6  7  8  
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, right, down, left, left, up, ]
+It took sequential 6ms to solve.
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, right, down, left, left, up, ]
+It took parallel 8ms to solve.
+-------------------------------------------------
+3  4  1  
+6  8  2  
+7  0  5  
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, up, right, down, down, left, left, up, up, ]
+It took sequential 12ms to solve.
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, up, right, down, down, left, left, up, up, ]
+It took parallel 15ms to solve.
+-------------------------------------------------
+0  3  4  
+5  1  2  
+6  7  8  
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[right, down, left, up, right, right, down, left, up, left, ]
+It took sequential 22ms to solve.
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[right, down, left, up, right, right, down, left, up, left, ]
+It took parallel 24ms to solve.
+-------------------------------------------------
+3  1  2  
+6  4  5  
+0  7  8  
+
+calculating moves
+It took 2 moves to solve the puzzle.
+The moves were: 
+[up, up, ]
+It took sequential 0ms to solve.
+
+calculating moves
+It took 2 moves to solve the puzzle.
+The moves were: 
+[up, up, ]
+It took parallel 5ms to solve.
+-------------------------------------------------
+1  2  7  
+6  3  5  
+4  8  0  
+
+calculating moves
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, down, right, up, up, left, down, right, down, left, up, up, left, ]
+It took sequential 1571ms to solve.
+
+calculating moves
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, down, right, up, up, left, down, right, down, left, up, up, left, ]
+It took parallel 1562ms to solve.
+-------------------------------------------------
+3  1  2  
+4  7  6  
+8  5  0  
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, right, down, left, up, left, down, right, up, left, up, ]
+It took sequential 290ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, right, down, left, left, up, right, down, left, up, up, ]
+It took parallel 268ms to solve.
+-------------------------------------------------
+0  2  5  
+3  4  7  
+6  8  1  
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, right, down, left, up, right, up, left, down, left, up, ]
+It took sequential 47ms to solve.
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, right, down, left, up, right, up, left, down, left, up, ]
+It took parallel 58ms to solve.
+-------------------------------------------------
+1  6  2  
+4  7  0  
+3  8  5  
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were: 
+[down, left, up, left, down, right, up, up, left, down, right, down, left, up, up, ]
+It took sequential 443ms to solve.
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were: 
+[down, left, up, left, down, right, up, up, left, down, right, down, left, up, up, ]
+It took parallel 411ms to solve.
+-------------------------------------------------
+1  3  4  
+7  6  2  
+8  5  0  
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, up, right, down, down, left, left, up, right, up, left, ]
+It took sequential 292ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, up, right, down, down, left, left, up, right, up, left, ]
+It took parallel 276ms to solve.
+-------------------------------------------------
+7  1  2  
+4  6  5  
+3  0  8  
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[up, left, up, right, down, left, down, right, up, up, left, ]
+It took sequential 33ms to solve.
+
+calculating moves
+It took 11 moves to solve the puzzle.
+The moves were: 
+[up, left, up, right, down, left, down, right, up, up, left, ]
+It took parallel 36ms to solve.
+-------------------------------------------------
+0  3  2  
+6  1  5  
+7  4  8  
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, down, down, left, up, up, ]
+It took sequential 5ms to solve.
+
+calculating moves
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, down, down, left, up, up, ]
+It took parallel 9ms to solve.
+-------------------------------------------------
+6  3  2  
+4  7  1  
+0  8  5  
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[up, right, right, down, left, left, up, up, right, down, down, left, up, up, ]
+It took sequential 211ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[up, right, right, down, left, left, up, up, right, down, down, left, up, up, ]
+It took parallel 169ms to solve.
+-------------------------------------------------
+4  3  1  
+6  7  2  
+0  8  5  
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[up, up, right, right, down, down, left, up, left, up, ]
+It took sequential 19ms to solve.
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[up, up, right, right, down, down, left, up, left, up, ]
+It took parallel 22ms to solve.
+-------------------------------------------------
+2  4  5  
+3  0  8  
+6  1  7  
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[up, left, down, right, down, right, up, up, left, down, left, up, ]
+It took sequential 67ms to solve.
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[up, left, down, right, down, right, up, up, left, down, left, up, ]
+It took parallel 77ms to solve.
+-------------------------------------------------
+1  2  0  
+3  7  5  
+6  8  4  
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[down, down, left, up, right, up, left, left, ]
+It took sequential 8ms to solve.
+
+calculating moves
+It took 8 moves to solve the puzzle.
+The moves were: 
+[down, down, left, up, right, up, left, left, ]
+It took parallel 10ms to solve.
+-------------------------------------------------
+0  2  4  
+3  6  1  
+7  8  5  
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, right, up, left, down, right, down, left, left, up, up, ]
+It took sequential 48ms to solve.
+
+calculating moves
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, right, up, left, down, right, down, left, left, up, up, ]
+It took parallel 65ms to solve.
+-------------------------------------------------
+1  2  5  
+4  8  0  
+3  6  7  
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, right, up, up, left, left, ]
+It took sequential 15ms to solve.
+
+calculating moves
+It took 9 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, right, up, up, left, left, ]
+It took parallel 21ms to solve.
+-------------------------------------------------
+shuffled 70 times
+7  3  5
+4  2  1
+6  0  8
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were:
+[left, up, up, right, down, right, up, left, down, left, down, right, up, left, up, ]
+It took sequential 806ms to solve.
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were:
+[left, up, up, right, down, right, up, left, down, left, down, right, up, left, up, ]
+It took parallel 553ms to solve.
+-------------------------------------------------
+shuffled 60 times
+3  1  2
+6  5  4
+8  0  7
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were:
+[up, right, down, left, left, up, right, right, down, left, up, left, up, ]
+It took sequential 95ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were:
+[up, right, down, left, left, up, right, right, down, left, up, left, up, ]
+It took parallel 92ms to solve.
+-------------------------------------------------

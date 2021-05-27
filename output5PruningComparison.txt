@@ -1,0 +1,90 @@
+This output file compares the non pruning sequential version to the pruning versions of sequential, parallel with one combiner,
+    and parallel with two combiners 4x4 puzzles.
+
+NOTES: similar results for "output4PruningComparison.txt' and 'output3Pruning.txt'
+
+
+6  2  0  3
+1  5  4  7  
+8  9  10 11 
+12 13 14 15
+
+It took 14 moves to solve the puzzle.
+The moves were:
+[left, down, right, up, left, left, down, right, up, right, down, left, up, left]
+It took sequential 186ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, down, right, up, left, left, down, right, up, right, down, left, up, left, ]
+It took sequential with pruning 227267ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, down, right, up, left, left, down, right, up, right, down, left, up, left, ]
+It took parallel with pruning and combiner 104378ms to solve.
+
+calculating moves
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, down, right, up, left, left, down, right, up, right, down, left, up, left, ]
+It took parallel_V2 with pruning and two combiners 27891ms to solve.
+-------------------------------------------------
+4  1  2  3  
+8  5  6  7  
+13 12 9  10 
+14 15 0  11
+
+It took 13 moves to solve the puzzle.
+The moves were:
+[left, left, up, right, right, right, down, left, left, left, up, up, up]
+It took sequential 96ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, right, right, down, left, left, left, up, up, up, ]
+It took sequential with pruning 52883ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, right, right, down, left, left, left, up, up, up, ]
+It took parallel with pruning and combiner 17367ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, right, right, down, left, left, left, up, up, up, ]
+It took parallel_V2 with pruning and two combiners 8220ms to solve.
+-------------------------------------------------
+1  2  6  3  
+4  9  5  7  
+0  8  14 11 
+12 10 13 15
+
+It took 10 moves to solve the puzzle.
+The moves were:
+[right, down, right, up, left, up, right, up, left, left]
+It took sequential 18ms to solve.
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[right, down, right, up, left, up, right, up, left, left, ]
+It took sequential with pruning 347ms to solve.
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[right, down, right, up, left, up, right, up, left, left, ]
+It took parallel with pruning and combiner 278ms to solve.
+
+calculating moves
+It took 10 moves to solve the puzzle.
+The moves were: 
+[right, down, right, up, left, up, right, up, left, left, ]
+It took parallel_V2 with pruning and two combiners 143ms to solve.
+-------------------------------------------------

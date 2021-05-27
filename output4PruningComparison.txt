@@ -1,0 +1,99 @@
+This output file compares the non pruning sequential version to the pruning versions of sequential and parallel with one combiner
+    solving 3x3 puzzles and one 4x4 puzzle.
+
+NOTES: we can see for all the solves the sequential with out pruning is substantially faster
+       however, occasionally the sequential version with out pruning will very quickly run out of space
+       after memory is full, it will throw a heap space error because it doesn't use pruning
+       those examples are not shown because the pruning versions did not complete within 2 hours
+       comparing the two that use pruning, again we can definitely see the improvement for solutions that take longer to find
+
+
+shuffled 40 times
+3  0  7
+2  1  8
+6  5  4
+
+It took 19 moves to solve the puzzle.
+The moves were:
+[down, right, down, left, up, left, up, right, down, right, up, left, down, right, down, left, up, up, left]
+It took sequential with no pruning 161ms to solve.
+
+calculating moves
+It took 19 moves to solve the puzzle.
+The moves were:
+[down, right, down, left, up, left, up, right, down, right, up, left, down, right, down, left, up, up, left, ]
+It took sequential with pruning 15182ms to solve.
+
+calculating moves
+It took 19 moves to solve the puzzle.
+The moves were:
+[down, right, down, left, up, left, up, right, right, down, left, up, right, down, down, left, up, up, left, ]
+It took parallel with pruning and combiner 19585ms to solve.
+-------------------------------------------------
+shuffled 40 times
+1  0  2
+7  6  5
+3  8  4
+
+It took 13 moves to solve the puzzle.
+The moves were:
+[right, down, down, left, up, left, down, right, up, right, up, left, left]
+It took sequential with no pruning 22ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were:
+[right, down, down, left, up, left, down, right, up, right, up, left, left, ]
+It took sequential with pruning 127ms to solve.
+
+calculating moves
+It took 13 moves to solve the puzzle.
+The moves were:
+[right, down, down, left, up, left, down, right, up, right, up, left, left, ]
+It took parallel with pruning and combiner 150ms to solve.
+-------------------------------------------------
+shuffled 500 times
+6  4  3
+1  5  2
+0  8  7
+
+It took 20 moves to solve the puzzle.
+The moves were:
+[right, up, left, up, right, right, down, down, left, left, up, up, right, down, right, down, left, up, left, up]
+It took sequential 300ms to solve.
+
+calculating moves
+It took 20 moves to solve the puzzle.
+The moves were:
+[right, up, left, up, right, right, down, down, left, left, up, up, right, down, right, down, left, up, left, up, ]
+It took sequential with pruning 39101ms to solve.
+
+calculating moves
+It took 20 moves to solve the puzzle.
+The moves were:
+[right, up, left, up, right, right, down, down, left, left, up, up, right, down, right, down, left, up, left, up, ]
+It took parallel with pruning and combiner 37461ms to solve.
+-------------------------------------------------
+shuffled 30 times
+1  2  3  0
+4  5  11 10
+8  6  14 7
+12 9  13 15
+
+It took 15 moves to solve the puzzle.
+The moves were:
+[left, left, down, down, down, right, up, up, right, down, left, up, left, up, left]
+It took sequential 274ms to solve.
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were:
+[left, left, down, down, down, right, up, up, right, down, left, up, left, up, left, ]
+It took sequential 636513ms to solve.
+
+calculating moves
+It took 15 moves to solve the puzzle.
+The moves were:
+[left, left, down, down, down, right, up, up, right, down, left, up, left, up, left, ]
+It took parallel 266962ms to solve.
+-------------------------------------------------

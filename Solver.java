@@ -79,7 +79,7 @@ public class Solver {
         // only add a task if the queue isn't empty
         // have to do this cause queue will be empty while initial puzz
         // is being processed before task adds it's children
-      
+
         // Will it make a difference if we create this variable, then
         // pass it to the task
         // or if we call q.remove() as a parameter
@@ -89,7 +89,7 @@ public class Solver {
           // ProcessStateTask nextStateTask = new ProcessStateTask(q.remove(), q, minSolution, solved);
           pool.execute(nextStateTask);
         }
-        
+
       }
 
       // shutdown the pool!
@@ -126,7 +126,7 @@ public class Solver {
         // only add a task if the queue isn't empty
         // have to do this cause queue will be empty while initial puzz
         // is being processed before task adds it's children
-      
+
         // Will it make a difference if we create this variable, then
         // pass it to the task
         // or if we call q.remove() as a parameter
@@ -135,7 +135,7 @@ public class Solver {
           ProcessPruneStateTask nextStateTask = new ProcessPruneStateTask(nextState, q, minSolution, solved, isSolved, usedPuzzes);
           pool.execute(nextStateTask);
         }
-        
+
       }
 
       // shutdown the pool!
@@ -198,7 +198,7 @@ public class Solver {
           }
         }
 
-      }      
+      }
 
       while(!q.isEmpty()){
 
@@ -214,7 +214,7 @@ public class Solver {
       }
 
       // shutdown the pool!
-      pool.shutdown();
+      pool.shutdownNow();
 
       // solved will have a puzzle
       // while loop cannot end until it isn't null

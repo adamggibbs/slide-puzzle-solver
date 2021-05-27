@@ -87,8 +87,12 @@ public class Puzzle{
 
     // shuffle()
     public void shuffle(){
-        int shuffles = 100;
 
+        // default number of shuffles
+        int shuffles = 50;
+
+        // for each shuffle, randomly pick a move
+        // and perform it
         for(int i = 0; i < shuffles; i++){
             int move = (int)(Math.random()*4);
 
@@ -103,16 +107,14 @@ public class Puzzle{
             }
         }
 
-        // for(int i = 0; i < 9; i++){
-        //     this.move_right();
-        //     this.move_down();
-        // }
-
+        // make sure prevMoves arraylist is clean
         prevMoves=new ArrayList<>();
+        // add -1 as first move, denotes a newly shuffled puzzle
         prevMoves.add(-1);
     }
 
     // shuffle() overload to allow shuffles to be given
+    // works just as other shuffle method
     public void shuffle(int shuffles){
 
         for(int i = 0; i < shuffles; i++){
@@ -129,23 +131,24 @@ public class Puzzle{
             }
         }
 
-        // for(int i = 0; i < 9; i++){
-        //     this.move_right();
-        //     this.move_down();
-        // }
-
         prevMoves=new ArrayList<>();
         prevMoves.add(-1);
     }
 
     // isSolved()
-
+    // loop through array to see if puzzle is solved
+    // if previous element is ever greater than current
+    // element then puzzle is not solved
     public boolean isSolved(){
 
+        // make first check -1 since first piece should be 0
         int last_piece = -1;
+        // loop through puzzle to check each piece
         for(int i = 0; i < puzzle.length; i++){
             for(int j = 0; j < puzzle[0].length; j++){
                 if(puzzle[i][j] <= last_piece){
+                    // return false immediately if a current piece
+                    // is less than previous piece
                     return false;
                 } else {
                     last_piece = puzzle[i][j];
@@ -153,25 +156,30 @@ public class Puzzle{
             }
         }
 
+        // if all pieces were in increasing order, return true
         return true;
 
     }
 
     // print()
-
+    // create quick print method for puzzle
     public void print(){
         System.out.println(this);
     }
 
     // printPrevMoves()
-
+    // prints previous moves taken on puzzle
     public void printPrevMoves(){
 
+        // if there are no previous moves, say that
         if(prevMoves.size() == 0){
             System.out.println("There are no previous moves.");
         }
 
+        // skip first move since it is set to be -1 by shuffle
+        // print open bracket with first move
         System.out.print("[" + getDir(this.prevMoves.get(1)) + ", ");
+        // print 20 moves per line
         for(int i = 2; i < this.prevMoves.size()-1; i++){
             if(i % 20 == 0){
                 String dir = getDir(this.prevMoves.get(i));
@@ -181,9 +189,14 @@ public class Puzzle{
                 System.out.print(dir + ", ");
             }
         }
+        // print last move with closed bracket 
         System.out.println(getDir(this.prevMoves.get(prevMoves.size()-1)) + "]");
     }
 
+    // getDir()
+    // private method that converts ints 0-3 
+    // to their corresponding move direction
+    // to print
     private String getDir(int move){
 
         String dir = "";

@@ -1,39 +1,54 @@
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ParallelSequentialTask implements Runnable{
 
+    // instance variables
     Puzzle initialPuzz;
-    AtomicBoolean isSolved;
     AtomicReference<Puzzle> solved;
 
-    public ParallelSequentialTask(Puzzle initialPuzz, AtomicBoolean isSolved, AtomicReference<Puzzle> solved){
+    // constructor
+    public ParallelSequentialTask(Puzzle initialPuzz, AtomicReference<Puzzle> solved){
         this.initialPuzz = initialPuzz;
-        this.isSolved = isSolved;
         this.solved = solved;
     }
 
+    // run() method
+    // run sequential solve starting at given puzzle
+    // when solve() returns a puzzle, check is thread has been interrupted
+    // if it hasn't, return solved puzzle
     public void run(){
         Puzzle solvedPuzzle = solve(initialPuzz);
         if(!Thread.currentThread().isInterrupted()){
             solved.set(solvedPuzzle);
-            isSolved.set(true);
         }
     }
 
+    // solve() method
+    // nearly identical to sequential solve in Solver.solve()
+    // but checks to see if thread has been interrupted
     public static Puzzle solve(Puzzle initialPuzz){
 
+      // create a queue to store states needed to be checked
         Queue<Puzzle> q = new LinkedList<>();
 
+        // add initial puzzle to the queue
         q.add(initialPuzz);
+
+        // while there are states to be checked and the pool has not been shutdown
         while (!q.isEmpty() && !Thread.currentThread().isInterrupted()){
 
+          // get the next state to be checked
           Puzzle puzzle=q.remove();
+
+          // see is state is solved
           if (puzzle.isSolved()){
             return puzzle;
           }
+          // otherwise, add all possible next states
+          // identical to Solver.solve code()
+          // see Solver.solve() for explainations in comments
           else{
             int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
             if (last_move!=1){
@@ -65,6 +80,8 @@ public class ParallelSequentialTask implements Runnable{
 
         }
 
+        // if no solution is found return initial puzzle
+        // this is reached if thread is interrupted
         return initialPuzz;
 
       }

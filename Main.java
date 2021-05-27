@@ -34,7 +34,7 @@ public class Main {
         // CODE BEYOND HERE CAN BE ALTERED FOR TESTING AND EXPLORATION:
 
 	// shuffle the puzzle
-        puzzle.shuffle(100);
+        puzzle.shuffle(75);
         puzzle.print();
 
 	// solve the puzzle
@@ -46,21 +46,21 @@ public class Main {
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
         System.out.println("It took parallel tree " + (duration / 1000000) + "ms to solve.");
 
-        startTime = System.nanoTime();
-        Puzzle puzzle2 = Solver.parallelSolve(puzzle);
-        endTime = System.nanoTime();
-        puzzle2.print();
-        Solver.printSolution(puzzle2);
-        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
+        // startTime = System.nanoTime();
+        // Puzzle puzzle2 = Solver.parallelSolve(puzzle);
+        // endTime = System.nanoTime();
+        // puzzle2.print();
+        // Solver.printSolution(puzzle2);
+        // duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        // System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
 
-        startTime = System.nanoTime();
-        Puzzle puzzle3 = Solver.parallelPrunedSolve(puzzle);
-        endTime = System.nanoTime();
-        puzzle3.print();
-        Solver.printSolution(puzzle3);
-        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
+        // startTime = System.nanoTime();
+        // Puzzle puzzle3 = Solver.solve(puzzle);
+        // endTime = System.nanoTime();
+        // puzzle3.print();
+        // Solver.printSolution(puzzle3);
+        // duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        // System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
 
         // END OF CODE TESTING AND EXPLORATION CHUNK
 

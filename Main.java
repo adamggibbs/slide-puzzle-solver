@@ -27,22 +27,25 @@ public class Main {
                 }
 
         }
-        //Timers to be printed for avg solution time
+        // timers to be printed for avg solution time
         long parallelTime=0;
         long treeTime=0;
         long sequentialTime=0;
 
-        //puzzles to check in avg tester
-        int puzzlesToCheck=10;
+        // total move counter to get avg solution length
+        int sequentialMoves=0;
 
-        //numshuffles
-        int shuffles=30;
+        // puzzles to check in avg tester
+        int puzzlesToCheck=5;
 
-        //passed booleans indicate if solves equal sequential
+        // number of times to shuffle puzzles
+        int shuffles=0;
+
+        // passed booleans indicate if solves equal sequential
         boolean parallelPassed=true;
         boolean treePassed=true;
 
-        //Runs through our generic tester multiple times to determine solve time avgs
+        // runs through generic tester multiple times to determine solve time avgs
         for (int i=0; i<puzzlesToCheck; i++){
           Puzzle puzzle = new Puzzle(n,m);
           puzzle.shuffle(shuffles);
@@ -61,32 +64,34 @@ public class Main {
           Puzzle puzzle3 = Solver.solve(puzzle);
           endTime = System.nanoTime();
           sequentialTime += (endTime - startTime);  //divide by 1000000 to get milliseconds.
+          sequentialMoves+=puzzle3.prevMoves.size();
 
-          //If the length of solve by parallelTreeSolve is worse than sequential
+          // if the length of solve by parallelTreeSolve is worse than sequential
           // change passed to false and print out puzzle for testing
           if (puzzle1.prevMoves.size()!=puzzle2.prevMoves.size()){
-            System.out.println("The following puzzle in tree solution failed");
+            System.out.println("The following puzzle's parrallel solution failed");
             treePassed=false;
             puzzle.print();
+            Solver.printSolution(puzzle3);
             Solver.printSolution(puzzle1);
-            Solver.printSolution(puzzle2);
 
           }
-          //If the length of solve by parallelSolve is worse than sequential
+          // if the length of solve by parallelSolve is worse than sequential
           // change passed to false and print out puzzle for testing
-          if (puzzle1.prevMoves.size()!=puzzle3.prevMoves.size()){
-            System.out.println("The following puzzle in parallel solution failed");
+          if (puzzle2.prevMoves.size()!=puzzle3.prevMoves.size()){
+            System.out.println("The following puzzle's tree solution failed");
             parallelPassed=false;
             puzzle.print();
-            Solver.printSolution(puzzle1);
             Solver.printSolution(puzzle3);
+            Solver.printSolution(puzzle2);
           }
         }
 
         double speedup = (sequentialTime / puzzlesToCheck / 1000000.0) / (parallelTime / puzzlesToCheck / 1000000.0);
 
-        //prints average speedups for a certain number of test puzzles
-        System.out.println("Average solve time chart:");
+        // prints average speedups for a certain number of test puzzles
+        System.out.println();
+        System.out.println("Chart of avg solve time for "+puzzlesToCheck+" puzzles with avg solution length of "+sequentialMoves/puzzlesToCheck+":");
         System.out.printf( "\n size | shuffles | solve type | avg solve time (ms) | avg speedup | passed \n"
                + "------+----------+------------+---------------------+-------------+--------\n");
         System.out.printf("%5s |%9d |%11s |%20f |%12.2f |%6b \n", n+"x"+m, shuffles, "sequential", (sequentialTime / puzzlesToCheck / 1000000.0), 1.00, true);
@@ -97,10 +102,6 @@ public class Main {
         System.out.printf("%5s |%9d |%11s |%20f |%12.2f |%6b \n", n+"x"+m, shuffles, "tree solve", (treeTime / puzzlesToCheck / 1000000.0), speedup, treePassed);
         System.out.println("------+----------+------------+---------------------+-------------+--------\n");
 
-
-        // System.out.println("It took parallel on average " + (parallelTime / puzzlesToCheck / 1000000) + "ms to solve.");
-        // System.out.println("It took parallelTreeSolve on average " + (treeTime / puzzlesToCheck / 1000000) + "ms to solve.");
-        // System.out.println("It took sequential on average " + (sequentialTime / puzzlesToCheck / 1000000) + "ms to solve.");
 
 	// create a n x m puzzle
         Puzzle puzzle = new Puzzle(n,m);
@@ -114,12 +115,30 @@ public class Main {
 
 	// solve the puzzle
         long startTime = System.nanoTime();
-        Puzzle puzzle1 = Solver.solve(puzzle);
+        Puzzle puzzle1 = Solver.parallelSolve(puzzle);
         long endTime = System.nanoTime();
         puzzle1.print();
         Solver.printSolution(puzzle1);
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("It took sequential " + (duration / 1000000) + "ms to solve.");
+        System.out.println("It took parallel " + (duration / 1000000) + "ms to solve.");
+
+
+        startTime = System.nanoTime();
+        Puzzle puzzle3 = Solver.parallelTreeSolve(puzzle);
+        endTime = System.nanoTime();
+        puzzle3.print();
+        Solver.printSolution(puzzle3);
+        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("It took parallel tree " + (duration / 1000000.0) + "ms to solve.");
+
+        startTime = System.nanoTime();
+        Puzzle puzzle2 = Solver.solve(puzzle);
+        endTime = System.nanoTime();
+        puzzle2.print();
+        Solver.printSolution(puzzle2);
+        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("It took sequential " + (duration / 1000000.0) + "ms to solve.");
+
 
 
 

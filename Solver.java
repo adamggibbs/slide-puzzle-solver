@@ -101,52 +101,7 @@ public class Solver {
       return solved.get();
 
     }
-
-    // PARALLEL PRUNED SOLVE - NOT FUNCTIONAL
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static Puzzle parallelPrunedSolve(Puzzle initialPuzz){
-
-      int nThreads = Runtime.getRuntime().availableProcessors();
-      ExecutorService pool = Executors.newFixedThreadPool(nThreads);
-
-      ConcurrentHashMap<String, Boolean> usedPuzzes = new ConcurrentHashMap<>();
-
-      int minSolution = Integer.MAX_VALUE;
-      AtomicBoolean isSolved = new AtomicBoolean(false);
-      AtomicReference<Puzzle> solved = new AtomicReference<>();
-
-      // need to finish code here to create and execute tasks
-      ConcurrentLinkedQueue<Puzzle> q = new ConcurrentLinkedQueue<Puzzle>();
-
-      q.add(initialPuzz);
-
-      // while we don't have a solution we have to keep looking
-      // PROBLEM: I THINK THIS READ OP IS WICKED SLOW
-      while (solved.get() == null){
-        // only add a task if the queue isn't empty
-        // have to do this cause queue will be empty while initial puzz
-        // is being processed before task adds it's children
-
-        // Will it make a difference if we create this variable, then
-        // pass it to the task
-        // or if we call q.remove() as a parameter
-        if(!q.isEmpty()){
-          Puzzle nextState = q.remove();
-          ProcessPruneStateTask nextStateTask = new ProcessPruneStateTask(nextState, q, minSolution, solved, isSolved, usedPuzzes);
-          pool.execute(nextStateTask);
-        }
-
-      }
-
-      // shutdown the pool!
-      pool.shutdown();
-
-      // solved will have a puzzle
-      // while loop cannot end until it isn't null
-      // returns a solved puzzle
-      return solved.get();
-
-    }
+    
 
     // PARALLEL TREE SOLVE
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

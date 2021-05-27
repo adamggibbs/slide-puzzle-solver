@@ -172,29 +172,30 @@ public class Puzzle{
     public void printPrevMoves(){
 
         // if there are no previous moves, say that
-        if(prevMoves.size() == 0){
+        if(prevMoves.size() <= 1){
             System.out.println("There are no previous moves.");
         }
-
-        // skip first move since it is set to be -1 by shuffle
-        // print open bracket with first move
-        System.out.print("[" + getDir(this.prevMoves.get(1)) + ", ");
-        // print 20 moves per line
-        for(int i = 2; i < this.prevMoves.size()-1; i++){
-            if(i % 20 == 0){
-                String dir = getDir(this.prevMoves.get(i));
-                System.out.println(dir + ",");
-            } else {
-                String dir = getDir(this.prevMoves.get(i));
-                System.out.print(dir + ", ");
-            }
+        else{
+          // skip first move since it is set to be -1 by shuffle
+          // print open bracket with first move
+          System.out.print("[" + getDir(this.prevMoves.get(1)) + ", ");
+          // print 20 moves per line
+          for(int i = 2; i < this.prevMoves.size()-1; i++){
+              if(i % 20 == 0){
+                  String dir = getDir(this.prevMoves.get(i));
+                  System.out.println(dir + ",");
+              } else {
+                  String dir = getDir(this.prevMoves.get(i));
+                  System.out.print(dir + ", ");
+              }
+          }
+          // print last move with closed bracket
+          System.out.println(getDir(this.prevMoves.get(prevMoves.size()-1)) + "]");
         }
-        // print last move with closed bracket 
-        System.out.println(getDir(this.prevMoves.get(prevMoves.size()-1)) + "]");
     }
 
     // getDir()
-    // private method that converts ints 0-3 
+    // private method that converts ints 0-3
     // to their corresponding move direction
     // to print
     private String getDir(int move){

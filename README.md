@@ -53,24 +53,38 @@ A list of all java classes in the repository and a description of their contents
 #### Solver.java
   - Contains methods involved with solving the puzzle
   - Has method that solves the puzzle with a brute force method
-  - Has method that prints the moves to the optimal solution of 
-    the puzzle after being solved
+  - Has method that solves the puzzle with a brute force method in parallel with small parallel tasks
+  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel
+  - Has method that prints the moves to the optimal solution of the puzzle after being solved
+  - All methods are static so they can be called without an instance of the Solver class via Solver.<i>solve-method()</i>
 
 #### ProcessStateTask.java
   - Runnable task for parallel solver
+  - Used in Solver.parallelSolve() as its parallel task
+  - Gets a puzzle and checks if it's solved, then adds its children to the queue of states to be checked
 
 #### ParallelSequentialTask.java
   - Runnable task for parallel tree solver
+  - Used in Solver.parallelTreeSolve as its parallel task
+  - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
+  - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
 #### Main.java (Ben will do this)
   - Contains only a main method to test out the functionality of 
     Puzzle and Solver
     
     
 ## How to compile and run on the command line: (Ben will do this)
-  -To Compile: use javac Main.java
-  -To run: 
-    -to use default puzzle dimensions (4x4): 'java Main'
-    - to use user defined puzzle dimensions: 'java Main n m' 
-      where n and m are integers specifying puzzle dimensions 
+#### To Compile: 
+  - <i>$</i> javac Main.java
+#### To run: 
+  - To use default puzzle dimensions (4x4): 
+
+    <i>$</i> java Main
+
+  - To use user defined puzzle dimensions: 
+
+    <i>$</i> java Main <i>n m</i> 
+    
+    where <b>m, n</b> are integers specifying puzzle dimensions 
 
 

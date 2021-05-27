@@ -1,11 +1,11 @@
-Slide Puzzle Solver
-COSC 273: Parallel & Distributed Computing
-19 May 2021
-Ben Wadsworth, Scott Romeyn, Adam Gibbs
-Project submission Folder: https://drive.google.com/drive/u/1/folders/1gOcAh22pcXFj694W3M7YJadTHfI7e2iu
+# Slide Puzzle Solver
+## COSC 273: Parallel & Distributed Computing
+## 19 May 2021
+## Ben Wadsworth, Scott Romeyn, Adam Gibbs
+### Project submission Folder: https://drive.google.com/drive/u/1/folders/1gOcAh22pcXFj694W3M7YJadTHfI7e2iu
 
 
-Description:
+### Description:
 This Project aims to create a slide puzzle game and a brute force solver for the optimal
 solution to any n x m slide puzzle. We will utilize parallel programming to speed up
 the brute force solver to be able to solve larger puzzles and puzzles with larger shuffles
@@ -29,7 +29,7 @@ analysis of sequential approximation vs multithreaded approximation but also ana
 runtime/memory use vs optimality of the solution. 
 
 
-Currently implemented functionality:
+### Currently implemented functionality:
 1. Puzzle class with methods for moving pieces, printing, and shuffling
 2. A sequential brute-force solver that can solve small puzzles and small shuffles
    a. "small puzzles" means n and m less than 10 or so
@@ -38,8 +38,8 @@ Currently implemented functionality:
       4x4 has to have 50 or fewer shuffles
 
 
-This repository contains:
-Puzzle.java
+### This repository contains:
+#### Puzzle.java
   - Holds the 2D array with position of puzzle pieces
   - Methods for moving pieces on the board. All moves are realtive to the open spot
     so "move up" means the open space moves up even tho this visually appears as the 
@@ -48,18 +48,18 @@ Puzzle.java
   - Methods to print the board and the previous moves that have been done to the board
   
   
-Solver.java
+#### Solver.java
   - Contains methods involved with solving the puzzle
   - Has method that solves the puzzle with a brute force method
   - Has method that prints the moves to the optimal solution of 
     the puzzle after being solved
     
- Main.java
+#### Main.java
   - Contains only a main method to test out the functionality of 
     Puzzle and Solver
     
     
-How to run code to solve a puzzle:
+### How to run code to solve a puzzle:
 1. Create a puzzle by creating a Puzzle object that takes a width and a height
    into the constructor
 2. Shuffle the puzzle with Puzzle.shuffle(). This takes in no parameters
@@ -67,7 +67,7 @@ How to run code to solve a puzzle:
    the solved puzzle which contains all the moves of the optimal solution.
 4. Use Solver.printSolution(Puzzle) to see the moves of the optimal solution.
 
-How to compile and run on the command line:
+### How to compile and run on the command line:
   -To Compile: use javac Main.java
   -To run: 
     -to use default puzzle dimensions (4x4): 'java Main'

@@ -22,6 +22,10 @@ This solver uses breadth first search to find the optimal solution. The initial 
 This solver uses the same approach as the sequential solver except the processing of each state is considered a task. So every time a state is popped off the queue, it is made into a task and sent to a thread pool to be completed. To make this happen, we used a concurrent queue so that multiple threads can add their children to the queue without contention causing errors. We also have an AtomicReference variable that is set to be null until a thread finds a solution and updates the AtomicReference to contain the solution found. At that point the while loop popping tasks off the queue stops since a solution has been found and it returns that solution. This solution almost always returns the optimal solution and we actually haven't had a test return a suboptimal solution yet. The only chance a suboptimal solution could occur is if a task with a solution crashes before updates the AtomicReference or if there are two solution each one move apart and the suboptimal task beats the optimal task to updating AtomicReference.
 ### Parallel Tree
 This solver uses a similar approach to the sequential solver but splits the task into multiple sequential tasks. This solution we devised after noticing that the sequential solver actually beats the parallel state solver for most tests and this is because the task of checking a puzzle state is so quick that the overhead from creating a pool task counters the speed up from checking <i>nThreads</i> puzzle states in parallel. This solution works by getting the first <b><i>s</i></b> number of states where s is in (<i>nThreads-3</i>, <i>nThreads</i>). We choose this number of states because the way the BFS tree is structured, each parent has 2 or 3 states and if we reach nThreads-2 states, then we cannot pop off a state and add all its children. Otherwise we'd have more initial states than threads and that would be slow. Then we take all those puzzle states and run sequential solve with each puzzle state as the initial puzzle. These calls to sequential solve are done in parallel and when one finds a solution it updates an AtomicReference to store the solved puzzle. At this point, the solver shuts down the pool and all other calls to sequential solve get terminated. This solution can also return a suboptimal solution if one thread reaches a solution at a greater depth faster than another thread finds the optimal solution. This solution can also return suboptimal solutions if a thread crashes and the optimal solution was in its part of the tree. However, there is also overlap on the trees since we don't prune to eliminate already checked states. So an optimal solution may appear in multiple threads' searches. We can guarantee that the solution returned is at worst the <i>nThread-th</i> best solution, so in the case of 4 threads, the returned solution is definitely at worst the 4th best.
+
+### Parallel Tree with Pruning
+This solver is identical to the parallel tree solution except it prunes already checked puzzles. It achieves this by having each thread keep a hashset of puzzle ids and every time a puzzle is popped off the queue is its id is in the hash set then it is not processed. We defined the puzzle id to be the order of pieces converted to a string so a 3x3 puzzle of [2 6 7, 8 4 1, 0 3 5] has an id "267841035". This allows less memory to be used when solving and reduces the frequency of getting java heap space errors. We still get errors since the pruning only occurs within each thread so a puzzle state could get checked once in each thread, but pruning globally would require using a concurrent hash map under high contention which is really slow. So this is a slight memory improvement in exchange for a slightly slower solution. This solution is only reasonable for complex puzzle solutions and performs very poorly for quick solves when compared to the sequential solver and other parallel solvers. 
+
 ### Sequential Solver with Pruning
 This sequential solver is very similar to the one described above. It is also a brute force breadth first search, however instead of using a queue this solver uses an ArrayList and does not remove any states that are generate from the list. When new states are generated, before adding to the list, a method is used to check if a puzzle state with an identical two dimensional int array already exists in the list. A state is only added to the list if it isn't already in the list. Another change is the `PuzzlePruning` class does not use an ArrayList to store previous moves. Instead each PuzzlePruning object stores a pointer to its parent state and the move that was made to generate its arrangement from the parent state.
 
@@ -53,6 +57,7 @@ A list of all java classes in the repository and a description of their contents
   - Has method that solves the puzzle with a brute force method
   - Has method that solves the puzzle with a brute force method in parallel with small parallel tasks
   - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel
+  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel with pruning to avoid repeat puzzle state checks
   - Has method that prints the moves to the optimal solution of the puzzle after being solved
   - All methods are static so they can be called without an instance of the Solver class via Solver.<i>solve-method()</i>
 
@@ -65,6 +70,13 @@ A list of all java classes in the repository and a description of their contents
   - Runnable task for parallel tree solver
   - Used in Solver.parallelTreeSolve as its parallel task
   - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
+  - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
+
+#### ParallelPruneSequentialTask.java
+  - Runnable task for parallel pruning tree solver
+  - Used in Solver.parallelPruneTreeSolve as its parallel task
+  - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
+  - Keeps a hash set that stores puzzles that have already been checked so they don't get checked again
   - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
 
 #### Main.java

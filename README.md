@@ -20,11 +20,12 @@ This solver uses breadth first search to find the optimal solution. The initial 
 
 ### Parallel State Solver
 This solver uses the same approach as the sequential solver except the processing of each state is considered a task. So every time a state is popped off the queue, it is made into a task and sent to a thread pool to be completed. To make this happen, we used a concurrent queue so that multiple threads can add their children to the queue without contention causing errors. We also have an AtomicReference variable that is set to be null until a thread finds a solution and updates the AtomicReference to contain the solution found. At that point the while loop popping tasks off the queue stops since a solution has been found and it returns that solution. This solution almost always returns the optimal solution and we actually haven't had a test return a suboptimal solution yet. The only chance a suboptimal solution could occur is if a task with a solution crashes before updates the AtomicReference or if there are two solution each one move apart and the suboptimal task beats the optimal task to updating AtomicReference.
+
 ### Parallel Tree
 This solver uses a similar approach to the sequential solver but splits the task into multiple sequential tasks. This solution we devised after noticing that the sequential solver actually beats the parallel state solver for most tests and this is because the task of checking a puzzle state is so quick that the overhead from creating a pool task counters the speed up from checking <i>nThreads</i> puzzle states in parallel. This solution works by getting the first <b><i>s</i></b> number of states where s is in (<i>nThreads-3</i>, <i>nThreads</i>). We choose this number of states because the way the BFS tree is structured, each parent has 2 or 3 states and if we reach nThreads-2 states, then we cannot pop off a state and add all its children. Otherwise we'd have more initial states than threads and that would be slow. Then we take all those puzzle states and run sequential solve with each puzzle state as the initial puzzle. These calls to sequential solve are done in parallel and when one finds a solution it updates an AtomicReference to store the solved puzzle. At this point, the solver shuts down the pool and all other calls to sequential solve get terminated. This solution can also return a suboptimal solution if one thread reaches a solution at a greater depth faster than another thread finds the optimal solution. This solution can also return suboptimal solutions if a thread crashes and the optimal solution was in its part of the tree. However, there is also overlap on the trees since we don't prune to eliminate already checked states. So an optimal solution may appear in multiple threads' searches. We can guarantee that the solution returned is at worst the <i>nThread-th</i> best solution, so in the case of 4 threads, the returned solution is definitely at worst the 4th best.
 
 ### Parallel Tree with Pruning
-This solver is identical to the parallel tree solution except it prunes already checked puzzles. It achieves this by having each thread keep a hashset of puzzle ids and every time a puzzle is popped off the queue is its id is in the hash set then it is not processed. We defined the puzzle id to be the order of pieces converted to a string so a 3x3 puzzle of [2 6 7, 8 4 1, 0 3 5] has an id "267841035". This allows less memory to be used when solving and reduces the frequency of getting java heap space errors. We still get errors since the pruning only occurs within each thread so a puzzle state could get checked once in each thread, but pruning globally would require using a concurrent hash map under high contention which is really slow. So this is a slight memory improvement in exchange for a slightly slower solution. This solution is only reasonable for complex puzzle solutions and performs very poorly for quick solves when compared to the sequential solver and other parallel solvers. 
+This solver is identical to the parallel tree solution except it prunes already checked puzzles. It achieves this by having each thread keep a HashSet of puzzle ids and every time a puzzle is popped off the queue if its id is in the hash set then it is not processed. We defined the puzzle id to be the order of pieces converted to a string so a 3x3 puzzle of [2 6 7, 8 4 1, 0 3 5] has an id "267841035". This allows less memory to be used when solving and reduces the frequency of getting java heap space errors. We still get errors since the pruning only occurs within each thread so a puzzle state could get checked once in each thread, but pruning globally would require using a concurrent HashMap under high contention which is really slow. So this is a slight memory improvement in exchange for a slightly slower solution. This solution is only reasonable for complex puzzle solutions and performs very poorly for quick solves when compared to the sequential solver and other parallel solvers.
 
 ### Sequential Solver with Pruning
 This sequential solver is very similar to the one described above. It is also a brute force breadth first search, however instead of using a queue this solver uses an ArrayList and does not remove any states that are generate from the list. When new states are generated, before adding to the list, a method is used to check if a puzzle state with an identical two dimensional int array already exists in the list. A state is only added to the list if it isn't already in the list. Another change is the `PuzzlePruning` class does not use an ArrayList to store previous moves. Instead each PuzzlePruning object stores a pointer to its parent state and the move that was made to generate its arrangement from the parent state.
@@ -36,7 +37,7 @@ This solver uses a thread pool with one thread combining the puzzle states gener
 This solver uses the same producer threads as the parallel solution with one combiner, but attempts to solve the waiting problem described by having two combiners. However, having two combiners creates different problems including the need for more shared objects and the need to continually check if the thread pool has been shutdown.
 
 ## Performance Optimization via Multithreading
-Our brute force sequential solver is really good at solving small puzzles with small shuffles, but once solutions became more complex, the BFS tree got so large that getting to depth 25 takes a very long time. To improve performance via multithreading we tried multiple methods for creating a parallel program for our BFS. The first method we employed sent each puzzle state to a thread pool to be processed. This method ended up being slower than the sequential solver for most puzzles and only became an improvement on more complex puzzles. This method struggled because the task of processing one puzzle state is very quick, so taking the time to create the task, send it to the pool, schedule it, and execute it ended up cancelling out the improvements from checking multiple puzzles in parallel. After this observation that the sequential search is actually pretty quick, we decided to split up the search tree into <b><i>nThreads</i></b> disjoint subtrees and run sequential search on each. This ended up giving us a runtime improvement of around <b><i>nThreads</i></b> times faster. This creates almost a hybrid of BFS and DFS since each sequential solver is running BFS but since each tree is smaller than the global one, we reach greater depths much quicker. This solution allowed us to solve larger puzzles and more complex puzzles as well. It should be noted that the two parallel solutions do not guarantee optimal solutions anymore. However, in every one of our trials the parallel solutions have returned the optimal solution to the puzzle. This is because as the depths gets greater in the trees, the number of puzzle states at each depth grows exponentially and the probability that one thread is checking a greater depth for a significant amount of time before other threads finish checking the shallower depths decreases. Our next solutions involved pruning. These solutions run significantly slower than the rest but they check far fewer puzzles. Theoretically, using pruning uses less memory, however the pruning solutions run significantly slower and testing the puzzle cases that cause memory errors on the earlier solutions would take many hours to run. Our non pruning solutions will get memory errors after a few minutes of runtime but the pruned solutions do not. In these solutions the two combiner solution is quicker than the one combiner which is quicker than the sequential solver, but all of them are slower than the non pruning solutions. This optimization becomes more important if you're using a laptop with small memory. When we run on remus and romulus the memory error is almost never an issue.
+Our brute force sequential solver is really good at solving small puzzles with small shuffles, but once solutions became more complex, the BFS tree got so large that getting to depth 25 takes a very long time. To improve performance via multithreading we tried multiple methods for creating a parallel program for our BFS. The first method we employed sent each puzzle state to a thread pool to be processed. This method ended up being slower than the sequential solver for most puzzles and only became an improvement on more complex puzzles. This method struggled because the task of processing one puzzle state is very quick, so taking the time to create the task, send it to the pool, schedule it, and execute it ended up cancelling out the improvements from checking multiple puzzles in parallel. After this observation that the sequential search is actually pretty quick, we decided to split up the search tree into <b><i>nThreads</i></b> disjoint subtrees and run sequential search on each. This ended up giving us a runtime improvement of around <b><i>nThreads</i></b> times faster. This creates almost a hybrid of BFS and DFS since each sequential solver is running BFS but since each tree is smaller than the global one, we reach greater depths much quicker. This solution allowed us to solve larger puzzles and more complex puzzles as well. It should be noted that the two parallel solutions do not guarantee optimal solutions anymore. However, in every one of our trials the parallel solutions have returned the optimal solution to the puzzle. This is because as the depths gets greater in the trees, the number of puzzle states at each depth grows exponentially and the probability that one thread is checking a greater depth for a significant amount of time before other threads finish checking the shallower depths decreases. Our next solutions involved pruning. These solutions run significantly slower than the rest but they check far fewer puzzles. Theoretically, using pruning uses less memory, however the pruning solutions run significantly slower and testing the puzzle cases that cause memory errors on the earlier solutions would take many hours to run. Our non pruning solutions will get memory errors after a few minutes of runtime but the pruned solutions do not. In these solutions the two combiner solution is quicker than the one combiner which is quicker than the sequential solver, but all of them are slower than the non pruning solutions. This optimization becomes more important if you're using a laptop with small memory. When we run on Remus and Romulus the memory error is almost never an issue.
 
 ## Comparison of Solver Performance
 We assess performance on two accounts: runtime and memory use. In terms of runtime the parallel tree solver is by far the fastest solver. The sequential and parallel solvers are the second and third fastest solver. The sequential solver beats the parallel solver for small puzzles and the parallel solver only starts to beat the sequential solver for much larger solutions. The pruning methods are then much slower than the non pruning methods but for their runtime performance, the two combiner solution is fastest, the one combiner solution is second, and the sequential method is the slowest. The pruning methods theoretically perform well when we consider memory use. The non pruning methods run out of memory since the queues get too large for complex solutions but the pruning methods don't have this issue for most puzzles. They did not have memory issues for any of the puzzles that we tested.
@@ -56,8 +57,10 @@ A list of all java classes in the repository and a description of their contents
   - Contains methods involved with solving the puzzle
   - Has method that solves the puzzle with a brute force method
   - Has method that solves the puzzle with a brute force method in parallel with small parallel tasks
-  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel
-  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel with pruning to avoid repeat puzzle state checks
+  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to
+    be run in parallel
+  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to
+    be run in parallel with pruning to avoid repeat puzzle state checks
   - Has method that prints the moves to the optimal solution of the puzzle after being solved
   - All methods are static so they can be called without an instance of the Solver class via Solver.<i>solve-method()</i>
 
@@ -104,7 +107,9 @@ A list of all java classes in the repository and a description of their contents
 #### NextStateTaskPruning.java
   - Producer task for the parallel solver with pruning
   - Used in SolverPruning.parallelSolve() and SolverPruning.parallelSolve_V2() as its parallel task
-  - Gets a puzzle and produces the next states. If a child state is solved it updates a shared boolean to tell the main thread a solution has been found. Regardless of whether a state is a solution or not this task adds all its children to the Concurrent HashMap that will be checked by the combiner task(s).
+  - Gets a puzzle and produces the next states. If a child state is solved it updates a shared boolean to tell the
+    main thread a solution has been found. Regardless of whether a state is a solution or not this task adds all
+    its children to the Concurrent HashMap that will be checked by the combiner task(s).
 
 #### CombinerTask.java
   - This task goes through each threadID in order in the concurrent HashMap `map`, checks to see if any of the puzzle states produced are solved.
@@ -112,22 +117,29 @@ A list of all java classes in the repository and a description of their contents
   - If a state isn't solved and isn't in the concurrent HashMap `bigList` it adds the state.
 
 #### CombinerTaskParallelV2.java
-  - This task is very similar to the `CombinerTask`, however it as the added AtomicInteger `oddOReven` so one combiner task will check even threads and one will check odd.
-  - The even combiner will send even puzzle states and the odd combiner odd puzzle states vie the concurrent HashMap `biglist` again.
+  - This task is very similar to the `CombinerTask`, however it as the added AtomicInteger `oddOReven` so one
+    combiner task will check even threads and one will check odd.
+  - The even combiner will send even puzzle states and the odd combiner odd puzzle states vie the concurrent
+    HashMap `biglist` again.
 
 #### MainPruning.java
-  - Contains the main method to test the same puzzle solve for each type of solution: sequential with pruning, parallel with one combiner, and parallel with two combiners.
+  - Contains the main method to test the same puzzle solve for each type of solution: sequential with pruning, parallel
+    with one combiner, and parallel with two combiners.
 
 #### 3x3InitialTester.sh
   - A script which runs the baseline `Main` on 3x3 puzzles multiple times
     with different shuffles
+  - Prints output in `3x3output.txt`
 
 #### 4x4InitialTester.sh
   - A script which runs the baseline `Main` on 4x4 puzzles multiple times
     with different shuffles
+  - Prints output in `4x4output.txt`
+
 
 #### PruningTester.sh
-  - Shell script that runs trials for 3x3 and 4x4 puzzles with 30 and 40 shuffles and prints results to `outputPruningTest.txt`.
+  - Shell script that runs trials for 3x3 and 4x4 puzzles with 30 and 40 shuffles and prints results
+    to `outputPruningTest.txt`.
 
 #### Output Files for Non-Pruning Solutions
     - Output for non-pruning solutions include sequential, parallel, and parallel tree solutions
@@ -136,7 +148,8 @@ A list of all java classes in the repository and a description of their contents
     - 4x4Output files include shuffles of 30 and 40
 
 #### Output Files for Pruning
-    - Tests run for pruning files comparing all methods including some comparisons to the brute force sequential solver with out pruning.
+    - Tests run for pruning files comparing all methods including some comparisons to the brute force sequential solver
+      without pruning.
 
 
 ## How to compile and run on the command line:

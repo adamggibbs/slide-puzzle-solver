@@ -244,6 +244,102 @@ public class Solver {
 
     }
 
+    // PARALLEL PRUNE TREE SOLVE
+    /* Use Breadth First Search to find the optimal solution to slide puzzle
+     * Splits search tree into (approximately) nThreads subtrees and performs
+     *    the sequential BFS search on each subtree 
+     * In each subtree it sequentially checks every puzzle state and if it's 
+     *    not a solution, adds all next possible states to a queue to be checked later
+     * Keeps a HashSet in each thread so threads 
+     * Returns the solved puzzle with an Arraylist of the moves taken
+     */
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static Puzzle parallelPruneTreeSolve(Puzzle initialPuzz){
+
+      // get number of available threads and create a pool of them
+      int nThreads = Runtime.getRuntime().availableProcessors();
+      ExecutorService pool = Executors.newFixedThreadPool(nThreads);
+
+      // create Atomic varibale to store solved puzzle
+      AtomicReference<Puzzle> solved = new AtomicReference<>();
+
+      // create a queue to store initial states
+      Queue<Puzzle> q = new LinkedList<Puzzle>();
+
+      // add initial puzzle to the queue
+      q.add(initialPuzz);
+
+      // perform sequential solve as in Solver.solve() until
+      // size of queue is grater than nThreads-3
+      // we go to nThreads-3 becuase at most 3 children are
+      // added from each state and we can't have more than nThreads
+      // states in the queue
+      while (q.size() <= (nThreads-3)){
+
+        // this code is identical to that in Solver.solve()
+        // see Solver.solve() for explainations in comments
+        Puzzle puzzle=q.remove();
+        if (puzzle.isSolved()){
+          return puzzle;
+        }
+        else{
+          int last_move=puzzle.prevMoves.get(puzzle.prevMoves.size()-1);
+          if (last_move!=1){
+            Puzzle toAdd = Solver.copy(puzzle);
+            if (toAdd.move_down()){
+                q.add(toAdd);
+            }
+          }
+          if (last_move!=0){
+            Puzzle toAdd1 = Solver.copy(puzzle);
+            if (toAdd1.move_up()){
+                q.add(toAdd1);
+            }
+
+          }
+          if (last_move!=3){
+            Puzzle toAdd2 = Solver.copy(puzzle);
+            if (toAdd2.move_right()){
+                q.add(toAdd2);
+            }
+          }
+          if (last_move!=2){
+            Puzzle toAdd3 = Solver.copy(puzzle);
+            if (toAdd3.move_left()){
+                q.add(toAdd3);
+            }
+          }
+        }
+
+      }
+
+      // for each state in the queue, create a task that performs
+      // sequential solve starting at that puzzle state
+      while(!q.isEmpty()){
+
+        ParallelPruneSequentialTask task = new ParallelPruneSequentialTask(q.remove(), solved);
+        pool.execute(task);
+
+      }
+
+      // constantly check is a solution has been reached
+      // when there is a solution, break to shutdown pool and return
+      while(true){
+        if(solved.get() != null){
+          break;
+        }
+      }
+
+      // shutdown the pool!
+      pool.shutdownNow();
+
+      // solved will have a puzzle
+      // while loop cannot end until it isn't null
+      // returns a solved puzzle
+      return solved.get();
+
+    }
+
     // ADDITIONAL METHODS
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

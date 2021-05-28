@@ -1,17 +1,20 @@
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ParallelSequentialTask implements Runnable{
+public class ParallelPruneSequentialTask implements Runnable{
 
     // instance variables
     Puzzle initialPuzz;
     AtomicReference<Puzzle> solved;
+    HashSet<String> checkedPuzzles;
 
     // constructor
-    public ParallelSequentialTask(Puzzle initialPuzz, AtomicReference<Puzzle> solved){
+    public ParallelPruneSequentialTask(Puzzle initialPuzz, AtomicReference<Puzzle> solved){
         this.initialPuzz = initialPuzz;
         this.solved = solved;
+        this.checkedPuzzles = new HashSet<String>();
     }
 
     // run() method
@@ -28,9 +31,9 @@ public class ParallelSequentialTask implements Runnable{
     // solve() method
     // nearly identical to sequential solve in Solver.solve()
     // but checks to see if thread has been interrupted
-    private Puzzle solve(Puzzle initialPuzz){
+    public Puzzle solve(Puzzle initialPuzz){
 
-      // create a queue to store states needed to be checked
+        // create a queue to store states needed to be checked
         Queue<Puzzle> q = new LinkedList<>();
 
         // add initial puzzle to the queue
@@ -41,6 +44,10 @@ public class ParallelSequentialTask implements Runnable{
 
           // get the next state to be checked
           Puzzle puzzle=q.remove();
+
+          if(alreadyChecked(puzzle)){
+            continue;
+          }
 
           // see is state is solved
           if (puzzle.isSolved()){
@@ -84,6 +91,28 @@ public class ParallelSequentialTask implements Runnable{
         // this is reached if thread is interrupted
         return initialPuzz;
 
-      }
+    }
+
+    private boolean alreadyChecked(Puzzle toCheck){
+
+        int[][] puzzle = toCheck.puzzle;
+
+        String id = "";
+
+        for(int i = 0; i < puzzle.length; i++){
+            for(int j = 0; j < puzzle[0].length; j++){
+                id += puzzle[i][j];
+            }
+        }
+
+        if(checkedPuzzles.contains(id)){
+            return true;
+        } else {
+            checkedPuzzles.add(id);
+            return false;
+        }
+        
+    }
+
 
 }

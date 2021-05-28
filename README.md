@@ -13,18 +13,18 @@ This document contains the write up of our slide puzzle solver project. This REA
 This Project aims to create a slide puzzle game and a brute force solver for the optimal
 solution to any <b>n x m</b> slide puzzle. We will utilize parallel programming to speed up
 the brute force solver to be able to solve larger puzzles and puzzles with larger shuffles
-within a reasonable amount of time. Possible extensions to this project would be 
+within a reasonable amount of time. Possible extensions to this project would be
 implementing a approximate solver that finds near-optimal solutions and seeing
 how that compares to brute force and how/if that solver benefits from parallization. Also,
-adding visualizations such as watching the slide puzzle get solved optimally after the 
+adding visualizations such as watching the slide puzzle get solved optimally after the
 Solver finds the optimal solution or a program that converts am image into a <b>n x m</b> puzzle
-and unscrambles it after finding the solution. 
+and unscrambles it after finding the solution.
 ## Our implementations:
 
-We had several implementations of slide puzzle sovlers that each perform the task of finding the optimal solution for any given shuffled slide puzzle of size <b>n x m</b>. Some implementations are run sequentially while others are designed to be run in parallel. Below are descriptions of each implementation and the following sections explain and compare the use of multithreading in more depth. 
+We had several implementations of slide puzzle sovlers that each perform the task of finding the optimal solution for any given shuffled slide puzzle of size <b>n x m</b>. Some implementations are run sequentially while others are designed to be run in parallel. Below are descriptions of each implementation and the following sections explain and compare the use of multithreading in more depth.
 
 ### Sequential Solver (Adam will do this)
-This solver uses breadth first search to find the optimal solution. The initial shuffled puzzle is added to a queue and then while the queue is not empty, we pop a puzzle off the queue and process it. Processing a puzzle state involves checking if it is solved, in which case it is returned as the solution, but if it is not solved it finds all possible next states and adds them all to the queue. Possible next states are the states that can be obtained from the current state by making one valid move (non valid moves would be moving the piece off the board in the case it was on the edge). We also don't go back to the parent state, so if the previous move on that state was down we wouldn't then move back up because we know that wouldn't be a solution. This process continues until a solution is found and returned. It returns a solved puzzle which contains an arraylist of the moves needed to solve that puzzle. 
+This solver uses breadth first search to find the optimal solution. The initial shuffled puzzle is added to a queue and then while the queue is not empty, we pop a puzzle off the queue and process it. Processing a puzzle state involves checking if it is solved, in which case it is returned as the solution, but if it is not solved it finds all possible next states and adds them all to the queue. Possible next states are the states that can be obtained from the current state by making one valid move (non valid moves would be moving the piece off the board in the case it was on the edge). We also don't go back to the parent state, so if the previous move on that state was down we wouldn't then move back up because we know that wouldn't be a solution. This process continues until a solution is found and returned. It returns a solved puzzle which contains an arraylist of the moves needed to solve that puzzle.
 
 ### Parallel State Solver (Adam will do this)
 This solver uses the same approach as the sequential solver except the processing of each state is considered a task. So every time a state is popped off the queue, it is made into a task and sent to a thread pool to be completed. To make this happen, we used a concurrent queue so that multiple threads can add their children to the queue without contention causing errors. We also have an AtomicReference variable that is set to be null until a thread finds a solution and updates the AtomicReference to contain the solution found. At that point the while loop popping tasks off the queue stops since a solution has been found and it returns that solution. This solution almost always returns the optimal solution and we actually haven't had a test return a suboptimal solution yet. The onlly chance a suboptimal solution could occur is if a task with a solution crashes before updates the AtomicReference or if there are two solution each one move apart and the suboptimal task beats the optimal task to updating AtomicReference.
@@ -50,11 +50,11 @@ A list of all java classes in the repository and a description of their contents
 #### Puzzle.java
   - Holds the 2D array with position of puzzle pieces
   - Methods for moving pieces on the board. All moves are realtive to the open spot
-    so "move up" means the open space moves up even tho this visually appears as the 
+    so "move up" means the open space moves up even tho this visually appears as the
     physical piece above the open space moving down into the open space.
   - Method to shuffle the board to begin solving the puzzle
   - Methods to print the board and the previous moves that have been done to the board
-  
+
 #### Solver.java
   - Contains methods involved with solving the puzzle
   - Has method that solves the puzzle with a brute force method
@@ -74,17 +74,20 @@ A list of all java classes in the repository and a description of their contents
   - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
   - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
 
-#### Main.java (Ben will do this)
-  - Contains only a main method to test out the functionality of 
-    Puzzle and Solver
-    
+#### Main.java
+  - Contains only a main method to test out the functionality of
+    the sequential solver, the parallel solver, and the parallel sequential solver
+  - Prints solution to a shuffled puzzle along with information about
+    speed of each solver
+
+
 #### PuzzlePruning.java
   - Holds the 2D array with position of puzzle pieces
   - Holds a pointer to the parent state to this puzzle state and the move it took to produce this state from the parent state
   - Methods for moving pieces on the board identical to the Puzzle.java class for the sequential solution without pruning.
   - Method to shuffle the board to begin solving the puzzle
   - Methods to print the board and the previous moves that have been done to the board
-  
+
 #### SolverPruning.java
   - Contains methods involved with solving the puzzle
   - Has method that solves the puzzle with a brute force method with pruning
@@ -108,34 +111,56 @@ A list of all java classes in the repository and a description of their contents
 
 #### MainPruning.java
   - Contains the main method to test the same puzzle solve for each type of solution: sequential with pruning, parallel with one combiner, and parallel with two combiners.
-    
+
+#### 3x3InitialTester.sh
+  - A script which runs the baseline `Main` on 3x3 puzzles multiple times
+    with different shuffles
+
+#### 4x4InitialTester.sh
+  - A script which runs the baseline `Main` on 4x4 puzzles multiple times
+    with different shuffles
+
+#### Output Files for Non-Pruning Solutions
+    - Output for non-pruning solutions include sequential, parallel, and parallel sequential solutions
+    - 3x3Output files include shuffles of 100 and 1000
+    - 4x4Output files include shuffles of 30 and 40
+
 #### Output Files for Pruning
-  - Tests run for pruning files comparing all methods including some comarisons to the brute force sequential solver with out pruning.
-    
-    
-## How to compile and run on the command line: (Ben will do this)
-#### To Compile: 
+    - Tests run for pruning files comparing all methods including some comparisons to the brute force sequential solver with out pruning.
+
+
+## How to compile and run on the command line:
+#### To Compile:
   - <i>$</i> javac *.java
-#### To run: 
-  - To use default puzzle dimensions (4x4): 
+#### To run:
+  - To use default puzzle dimensions (4x4):
 
     <i>$</i> java Main
     *or for pruning solutions:*
     <i>$</i> java MainPruning
 
-  - To use user defined puzzle dimensions: 
+  - To use user defined puzzle dimensions and default 40 shuffles:
 
-    <i>$</i> java Main <i>n m</i> 
-    
-    where <b>m, n</b> are integers specifying puzzle dimensions 
-    
+    <i>$</i> java Main <i>n m</i>
+
+    where <b>m, n</b> are integers specifying puzzle dimensions
+
+  - To use user defined puzzle dimensions and number of shuffles:
+
+    <i>$</i> java MainPruning <i>n m s</i>
     *or for pruning solutions:*
-    <i>$</i> java MainPruning <i>n m s</i> 
-    
+    <i>$</i> java MainPruning <i>n m s</i>
+
     where <i>n, m</i> are integers specifying puzzle dimensions and <i>s</i> is the number of shuffles you would like to perform
-    
+
   - To run tester for MainPruning.java (compile and then):
-    
+
     <i>$</i> bash PruningTester.sh
 
+  - To run 3x3 tester for Main.java (compile and then):
 
+    <i>$</i> bash 3x3InitialTester.sh
+
+  - To run 4x4 tester for Main.java (compile and then):
+
+    <i>$</i> bash 4x4InitialTester.sh

@@ -10,7 +10,7 @@ public class Main {
       // default number of times to shuffle puzzle
       int shuffles=40;
 
-      // see if user specified preferences for dimensions of puzzle
+      // see if user specified preferences for dimensions of puzzle and amount of shuffles
       if(args.length > 0){
           if(args.length == 1 || args.length > 3){
               System.err.println("Incorrect number of command line arguments [" + args.length + "]");
@@ -75,15 +75,15 @@ public class Main {
         double speedup = (sequentialTime / 1000000.0) / (parallelTime / 1000000.0);
         System.out.println();
         System.out.println("Solution summary for puzzle shuffled "+shuffles+" times:");
-        System.out.printf( "\n size | shuffles | solve type | avg solve time (ms) | avg speedup | # moves \n"
-               + "------+----------+------------+---------------------+-------------+--------\n");
-        System.out.printf("%5s |%9d |%11s |%20f |%12.2f |%6d \n", n+"x"+m, shuffles, "sequential", (sequentialTime / 1000000.0), 1.00, puzzle2.prevMoves.size()-1);
-        System.out.println("------+----------+------------+---------------------+-------------+--------\n");
-        System.out.printf("%5s |%9d |%11s |%20f |%12.2f |%6d \n", n+"x"+m, shuffles, "parallel", (parallelTime / 1000000.0), speedup, puzzle1.prevMoves.size()-1);
+        System.out.printf( "\n size | shuffles | solve type | solve time (ms) | speedup | # moves \n"
+               + "------+----------+------------+-----------------+---------+--------\n");
+        System.out.printf("%5s |%9d |%11s |%16f |%8.2f |%6d \n", n+"x"+m, shuffles, "sequential", (sequentialTime / 1000000.0), 1.00, puzzle2.prevMoves.size()-1);
+        System.out.println("------+----------+------------+-----------------+---------+--------\n");
+        System.out.printf("%5s |%9d |%11s |%16f |%8.2f |%6d \n", n+"x"+m, shuffles, "parallel", (parallelTime / 1000000.0), speedup, puzzle1.prevMoves.size()-1);
         speedup =  (sequentialTime / 1000000.0) / (treeTime / 1000000.0);
-        System.out.println("------+----------+------------+---------------------+-------------+--------\n");
-        System.out.printf("%5s |%9d |%11s |%20f |%12.2f |%6d \n", n+"x"+m, shuffles, "tree solve", (treeTime / 1000000.0), speedup, puzzle3.prevMoves.size()-1);
-        System.out.println("------+----------+------------+---------------------+-------------+--------\n");
+        System.out.println("------+----------+------------+-----------------+---------+--------\n");
+        System.out.printf("%5s |%9d |%11s |%16f |%8.2f |%6d \n", n+"x"+m, shuffles, "tree solve", (treeTime / 1000000.0), speedup, puzzle3.prevMoves.size()-1);
+        System.out.println("------+----------+------------+-----------------+---------+--------\n");
 
 
         // Print an empty line before next terminal prompt for readability

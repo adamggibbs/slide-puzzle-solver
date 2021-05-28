@@ -69,7 +69,8 @@ A list of all java classes in the repository and a description of their contents
 
 #### Main.java
   - Contains only a main method to test out the functionality of
-    the sequential solver, the parallel solver, and the parallel tree solver
+    the sequential solver, the parallel solver, the parallel tree solver,
+    and the pruned tree solver
   - Prints solution to a shuffled puzzle along with information about
     speed of each solver
 
@@ -118,6 +119,7 @@ A list of all java classes in the repository and a description of their contents
 
 #### Output Files for Non-Pruning Solutions
     - Output for non-pruning solutions include sequential, parallel, and parallel tree solutions
+    - Note: future outputs will contain results for pruned tree solution
     - 3x3Output files include shuffles of 100 and 1000
     - 4x4Output files include shuffles of 30 and 40
 

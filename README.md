@@ -1,7 +1,9 @@
 # Slide Puzzle Solver
 ## COSC 273: Parallel & Distributed Computing
-## 19 May 2021
+## 28 May 2021
 ## Ben Wadsworth, Scott Romeyn, Adam Gibbs
+
+### GitHub Repository: https://github.com/adamggibbs/slide-puzzle-solver#slide-puzzle-solver
 ### Project submission Folder: https://drive.google.com/drive/u/1/folders/1gOcAh22pcXFj694W3M7YJadTHfI7e2iu
 
 
@@ -22,11 +24,12 @@ and unscrambles it after finding the solution.
 We had several implementations of slide puzzle sovlers that each perform the task of finding the optimal solution for any given shuffled slide puzzle of size <b>n x m</b>. Some implementations are run sequentially while others are designed to be run in parallel. Below are descriptions of each implementation and the following sections explain and compare the use of multithreading in more depth. 
 
 ### Sequential Solver (Adam will do this)
+This solver uses breadth first search to find the optimal solution. The initial shuffled puzzle is added to a queue and then while the queue is not empty, we pop a puzzle off the queue and process it. Processing a puzzle state involves checking if it is solved, in which case it is returned as the solution, but if it is not solved it finds all possible next states and adds them all to the queue. Possible next states are the states that can be obtained from the current state by making one valid move (non valid moves would be moving the piece off the board in the case it was on the edge). We also don't go back to the parent state, so if the previous move on that state was down we wouldn't then move back up because we know that wouldn't be a solution. This process continues until a solution is found and returned. It returns a solved puzzle which contains an arraylist of the moves needed to solve that puzzle. 
 
 ### Parallel State Solver (Adam will do this)
-
+This solver uses the same approach as the sequential solver except the processing of each state is considered a task. So every time a state is popped off the queue, it is made into a task and sent to a thread pool to be completed. To make this happen, we used a concurrent queue so that multiple threads can add their children to the queue without contention causing errors. We also have an AtomicReference variable that is set to be null until a thread finds a solution and updates the AtomicReference to contain the solution found. At that point the while loop popping tasks off the queue stops since a solution has been found and it returns that solution. This solution almost always returns the optimal solution and we actually haven't had a test return a suboptimal solution yet. The onlly chance a suboptimal solution could occur is if a task with a solution crashes before updates the AtomicReference or if there are two solution each one move apart and the suboptimal task beats the optimal task to updating AtomicReference.
 ### Parallel Tree (Adam will do this)
-
+This solver uses a similar approach to the sequential solver but splits the task into multiple sequential tasks. This solution we devised after noticing that the sequential solver actually beats the parallel state solver for most tests and this is because the task of checking a puzzle state is so quick that the overhead from creating a pool task counters the speed up from checking <i>nThreads</i> puzzle states in parallel. This solution works by getting the first <b><i>s</i></b> number of states where s is in (<i>nThreads-3</i>, <i>nThreads</i>). We choose this number of states because the way the BFS tree is structured, each parent has 2 or 3 states and if we reach nThreads-2 states, then we cannot pop off a state and add all its children. Otherwise we'd have more intial states than threads and that would be slow. Then we take all those puzzle states and run sequential solve with each puzzle state as the initial puzzle. These calls to sequential solve are done in parallel and when one finds a solution it updates an AtomicReference to store the solved puzzle. At this point, the solver shuts down the pool and all other calls to sequential solve get terminated. This solution can also return a suboptimal solution if one thread reaches a solution at a greater depth faster than another thread finds the optimal solution. This solution can also return suboptimal solutions if a thread crashes and the optimal solution was in its part of the tree. However, there is also overlap on the trees since we don't prune to eliminate already checked states. So an optimal solution may appear in multiple threads' searches. We can guarantee that the solution returned is at worst the <i>nThread-th</i> best solution, so in the case of 4 threads, the returned solution is definitely at worst the 4th best.
 ### Scott Sequential (Change this name)
 
 ### Scott Combiner 1 (Change this name too)

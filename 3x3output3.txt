@@ -1,0 +1,630 @@
+An example puzzle:
+2  5  0  
+1  3  7  
+4  6  8  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, right, up, left, left, down, down, right, up, left, up]
+It took parallel 67ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, right, up, left, left, down, down, right, up, left, up]
+It took parallel tree 6.167305ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, right, up, left, left, down, down, right, up, left, up]
+It took sequential 12.441219ms to solve.
+
+An example puzzle:
+7  5  8  
+4  2  1  
+6  0  3  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[right, up, up, left, down, down, right, up, up, left, down, down, left, up, up, right, down, left, down, right,
+up, left, up]
+It took parallel 1791ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[right, up, up, left, down, down, right, up, up, left, down, down, left, up, up, right, down, left, down, right,
+up, left, up]
+It took parallel tree 1463.340522ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[right, up, up, left, down, down, right, up, up, left, down, down, left, up, up, right, down, left, down, right,
+up, left, up]
+It took sequential 1472.023462ms to solve.
+
+An example puzzle:
+4  5  3  
+7  2  8  
+0  1  6  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, left, down, right, up, right, up, left, left, down, right, up, left]
+It took parallel 166ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, left, down, right, up, right, up, left, left, down, right, up, left]
+It took parallel tree 71.596385ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, left, down, right, up, right, up, left, left, down, right, up, left]
+It took sequential 92.985749ms to solve.
+
+An example puzzle:
+0  4  1  
+5  8  3  
+6  7  2  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, right, down, left, left, up, up, right, down, left, up, right, right, down, left, left, up]
+It took parallel 192ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, right, down, left, left, up, up, right, down, left, up, right, right, down, left, left, up]
+It took parallel tree 198.678667ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, right, down, left, left, up, up, right, down, left, up, right, right, down, left, left, up]
+It took sequential 222.350313ms to solve.
+
+An example puzzle:
+1  0  4  
+5  7  3  
+2  6  8  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[left, down, down, right, up, up, left, down, right, right, up, left, left, down, right, right, up, left, left]
+It took parallel 262ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[left, down, down, right, up, up, left, down, right, right, up, left, left, down, right, right, up, left, left]
+It took parallel tree 171.037587ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[left, down, down, right, up, up, left, down, right, right, up, left, left, down, right, right, up, left, left]
+It took sequential 231.760585ms to solve.
+
+An example puzzle:
+4  3  2  
+8  7  1  
+6  5  0  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, right, down, left, left, up, up, right, down, left, up]
+It took parallel 82ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, right, down, left, left, up, up, right, down, left, up]
+It took parallel tree 42.417383ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, right, down, left, left, up, up, right, down, left, up]
+It took sequential 40.751451ms to solve.
+
+An example puzzle:
+2  0  8  
+3  5  7  
+4  1  6  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 17 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, up, left, left, down, down, right, right, up, up, left, down, left, up]
+It took parallel 124ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 17 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, up, left, left, down, down, right, right, up, up, left, down, left, up]
+It took parallel tree 19.819339ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 17 moves to solve the puzzle.
+The moves were: 
+[down, down, right, up, up, left, left, down, down, right, right, up, up, left, down, left, up]
+It took sequential 53.744399ms to solve.
+
+An example puzzle:
+0  1  5  
+3  6  4  
+7  2  8  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, down, left, up, up, right, down, right, up, left, left]
+It took parallel 17ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, down, left, up, up, right, down, right, up, left, left]
+It took parallel tree 8.280533ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 12 moves to solve the puzzle.
+The moves were: 
+[down, right, down, left, up, up, right, down, right, up, left, left]
+It took sequential 3.108893ms to solve.
+
+An example puzzle:
+1  3  0  
+6  5  7  
+4  8  2  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[left, down, right, down, left, up, right, up, left, down, right, down, left, left, up, right, down, right, up, up,
+left, left]
+It took parallel 921ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[left, down, right, down, left, up, right, up, left, down, right, down, left, left, up, right, down, right, up, up,
+left, left]
+It took parallel tree 1165.920926ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[left, down, right, down, left, up, right, up, left, down, right, down, left, left, up, right, down, right, up, up,
+left, left]
+It took sequential 647.860645ms to solve.
+
+An example puzzle:
+1  2  0  
+6  4  5  
+3  8  7  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[down, down, left, up, left, down, right, up, right, up, left, left, down, down, right, up, left, up]
+It took parallel 124ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[down, down, left, up, left, down, right, up, right, up, left, left, down, down, right, up, left, up]
+It took parallel tree 51.592732ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 18 moves to solve the puzzle.
+The moves were: 
+[down, down, left, up, left, down, right, up, right, up, left, left, down, down, right, up, left, up]
+It took sequential 87.106235ms to solve.
+
+An example puzzle:
+2  6  7  
+3  5  1  
+0  4  8  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, up, right, down, down, left, up, up, left, down, down, right, up, right, up, left, down,
+left, up]
+It took parallel 1126ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, up, right, down, down, left, up, up, left, down, down, right, up, right, up, left, down,
+left, up]
+It took parallel tree 797.71877ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 22 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, up, right, down, down, left, up, up, left, down, down, right, up, right, up, left, down,
+left, up]
+It took sequential 940.296586ms to solve.
+
+An example puzzle:
+2  4  8  
+7  0  6  
+5  3  1  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, up, left, left, down, right, right, down, left, up, right, up, left, down, right, down,
+left, left, up, up]
+It took parallel 3410ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, up, left, left, down, right, right, down, left, up, right, up, left, down, right, down,
+left, left, up, up]
+It took parallel tree 2263.107784ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, up, left, left, down, right, right, down, left, up, right, up, left, down, right, down,
+left, left, up, up]
+It took sequential 3710.150538ms to solve.
+
+An example puzzle:
+7  0  1  
+4  2  6  
+8  3  5  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, down, down, left, up, up, right, down, right, down, left, left, up, up, right, down, down,
+left, up, up]
+It took parallel 1776ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, down, down, left, up, up, right, down, right, down, left, left, up, up, right, down, down,
+left, up, up]
+It took parallel tree 1496.773921ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, down, down, left, up, up, right, down, right, down, left, left, up, up, right, down, down,
+left, up, up]
+It took sequential 1178.060659ms to solve.
+
+An example puzzle:
+4  7  0  
+3  8  6  
+2  1  5  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[left, down, down, left, up, right, down, right, up, up, left, down, down, right, up, up, left, left, down, down,
+right, right, up, left, up, left]
+It took parallel 9097ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[left, down, down, left, up, right, down, right, up, up, left, down, down, right, up, up, left, left, down, down,
+right, right, up, left, up, left]
+It took parallel tree 48118.790516ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[left, down, down, left, up, right, down, right, up, up, left, down, down, right, up, up, left, left, down, down,
+right, right, up, left, up, left]
+It took sequential 9274.672097ms to solve.
+
+An example puzzle:
+8  4  5  
+2  0  6  
+7  1  3  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[left, up, right, down, left, down, right, up, right, down, left, up, left, down, right, up, right, up, left, left,
+down, right, up, left]
+It took parallel 4644ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[left, up, right, down, left, down, right, up, right, down, left, up, left, down, right, up, right, up, left, left,
+down, right, up, left]
+It took parallel tree 4691.748673ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 24 moves to solve the puzzle.
+The moves were: 
+[left, up, right, down, left, down, right, up, right, down, left, up, left, down, right, up, right, up, left, left,
+down, right, up, left]
+It took sequential 4234.437974ms to solve.
+
+An example puzzle:
+5  3  7  
+8  6  0  
+4  2  1  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 25 moves to solve the puzzle.
+The moves were: 
+[down, left, up, left, up, right, down, left, down, right, up, up, right, down, down, left, up, up, right, down,
+down, left, up, left, up]
+It took parallel 4568ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 25 moves to solve the puzzle.
+The moves were: 
+[left, left, up, right, down, down, right, up, up, left, down, down, right, up, up, left, down, left, down, right,
+right, up, left, left, up]
+It took parallel tree 4318.182109ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 25 moves to solve the puzzle.
+The moves were: 
+[down, left, up, left, up, right, down, left, down, right, up, up, right, down, down, left, up, up, right, down,
+down, left, up, left, up]
+It took sequential 4706.737288ms to solve.
+
+An example puzzle:
+4  1  2  
+6  3  8  
+0  7  5  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, down, left, up, up, right, right, down, left, left, up]
+It took parallel 79ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, down, left, up, up, right, right, down, left, left, up]
+It took parallel tree 23.73598ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 16 moves to solve the puzzle.
+The moves were: 
+[right, right, up, up, left, down, down, left, up, up, right, right, down, left, left, up]
+It took sequential 37.091586ms to solve.
+
+An example puzzle:
+5  8  0  
+2  3  7  
+6  4  1  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, down, right, up, up, left, left, down, right, down, right, up, up, left, down, left, up]
+It took parallel 378ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, down, right, up, up, left, left, down, right, down, right, up, up, left, down, left, up]
+It took parallel tree 245.040527ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 20 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, down, right, up, up, left, left, down, right, down, right, up, up, left, down, left, up]
+It took sequential 341.465536ms to solve.
+
+An example puzzle:
+8  7  0  
+6  3  1  
+5  2  4  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, up, right, up, left, down, right, up, right, down, down, left, up, left, up, right, right,
+down, down, left, up, up, left]
+It took parallel 7198ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, up, up, right, down, left, up, right, right, down, down, left, up, left, up, right, right,
+down, down, left, up, up, left]
+It took parallel tree 8628.113104ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 26 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, up, up, right, down, left, up, right, right, down, down, left, up, left, up, right, right,
+down, down, left, up, up, left]
+It took sequential 7927.200861ms to solve.
+
+An example puzzle:
+8  0  1  
+3  5  6  
+7  2  4  
+
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, down, right, up, right, down, left, down, right, up, left, up, right, down, left, down,
+left, up, up]
+It took parallel 1462ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, down, right, up, right, down, left, down, right, up, left, up, right, down, left, down,
+left, up, up]
+It took parallel tree 1602.713496ms to solve.
+0  1  2  
+3  4  5  
+6  7  8  
+
+It took 23 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, down, right, up, right, down, left, down, right, up, left, up, right, down, left, down,
+left, up, up]
+It took sequential 1177.789961ms to solve.
+

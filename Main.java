@@ -48,8 +48,16 @@ public class Main {
 	// solve the puzzle
 
         long startTime = System.nanoTime();
-        Puzzle puzzle3 = Solver.parallelTreeSolve(puzzle);
+        Puzzle puzzle4 = Solver.parallelPruneTreeSolve(puzzle);
         long endTime = System.nanoTime();
+        puzzle4.print();
+        Solver.printSolution(puzzle4);
+        long pruneTime = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("It took pruned tree " + (pruneTime / 1000000.0) + "ms to solve.");
+
+        startTime = System.nanoTime();
+        Puzzle puzzle3 = Solver.parallelTreeSolve(puzzle);
+        endTime = System.nanoTime();
         puzzle3.print();
         Solver.printSolution(puzzle3);
         long treeTime = (endTime - startTime);  //divide by 1000000 to get milliseconds.
@@ -83,6 +91,9 @@ public class Main {
         speedup =  (sequentialTime / 1000000.0) / (treeTime / 1000000.0);
         System.out.println("------+----------+------------+-----------------+---------+--------\n");
         System.out.printf("%5s |%9d |%11s |%16f |%8.2f |%6d \n", n+"x"+m, shuffles, "tree solve", (treeTime / 1000000.0), speedup, puzzle3.prevMoves.size()-1);
+        System.out.println("------+----------+------------+-----------------+---------+--------\n");
+        speedup =  (sequentialTime / 1000000.0) / (pruneTime / 1000000.0);
+        System.out.printf("%5s |%9d |%11s |%16f |%8.2f |%6d \n", n+"x"+m, shuffles, "pruned tree", (pruneTime / 1000000.0), speedup, puzzle4.prevMoves.size()-1);
         System.out.println("------+----------+------------+-----------------+---------+--------\n");
 
 

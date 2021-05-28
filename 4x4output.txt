@@ -1,0 +1,960 @@
+Puzzle to be solved:
+1  2  6  3  
+4  9  0  7  
+13 10 5  11 
+8  12 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, left, down, right, up, up, right, up, left, left]
+It took parallel tree 52.133974ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, left, down, right, up, up, right, up, left, left]
+It took parallel 44ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, left, down, right, up, up, right, up, left, left]
+It took sequential 14.806998ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |       14.806998 |    1.00 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |       44.218701 |    0.33 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       52.133974 |    0.28 |    11 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+5  4  2  3  
+1  6  0  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, left]
+It took parallel tree 9.849502ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, left]
+It took parallel 8ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[left, up, left, down, right, up, left]
+It took sequential 1.792106ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        1.792106 |    1.00 |     7 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |        8.250538 |    0.22 |     7 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |        9.849502 |    0.18 |     7 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  3  
+0  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 1 moves to solve the puzzle.
+The moves were: 
+[up, up]
+It took parallel tree 2.756416ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 1 moves to solve the puzzle.
+The moves were: 
+[up, up]
+It took parallel 2ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 1 moves to solve the puzzle.
+The moves were: 
+[up, up]
+It took sequential 0.050488ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        0.050488 |    1.00 |     1 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |        2.101800 |    0.02 |     1 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |        2.756416 |    0.02 |     1 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+5  4  2  3  
+0  1  6  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 5 moves to solve the puzzle.
+The moves were: 
+[up, right, down, left, up]
+It took parallel tree 5.186858ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 5 moves to solve the puzzle.
+The moves were: 
+[up, right, down, left, up]
+It took parallel 3ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 5 moves to solve the puzzle.
+The moves were: 
+[up, right, down, left, up]
+It took sequential 0.430926ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        0.430926 |    1.00 |     5 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |        3.618498 |    0.12 |     5 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |        5.186858 |    0.08 |     5 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+8  0  1  3  
+5  4  2  7  
+9  10 6  11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, down, down, left, left, up, up]
+It took parallel tree 45.09657ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, down, down, left, left, up, up]
+It took parallel 37ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[down, left, up, right, right, down, down, left, left, up, up]
+It took sequential 17.654433ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |       17.654433 |    1.00 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |       37.188826 |    0.47 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       45.096570 |    0.39 |    11 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  2  6  3  
+5  1  10 7  
+8  9  14 11 
+12 13 15 0  
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, up, up, left, down, left, up]
+It took parallel tree 13.943172ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, up, up, left, down, left, up]
+It took parallel 9ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, up, up, left, down, left, up]
+It took sequential 1.536977ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        1.536977 |    1.00 |     8 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |        9.441628 |    0.16 |     8 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       13.943172 |    0.11 |     8 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  0  
+8  5  6  3  
+12 10 11 7  
+13 9  14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, down, left, up, up, up]
+It took parallel tree 19.593787ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, down, left, up, up, up]
+It took parallel 11ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, down, left, left, down, left, up, up, up]
+It took sequential 2.116771ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        2.116771 |    1.00 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |       11.231405 |    0.19 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       19.593787 |    0.11 |     9 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  2  6  3  
+5  0  1  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up]
+It took parallel tree 8.117666ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up]
+It took parallel 5ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up]
+It took sequential 0.861098ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        0.861098 |    1.00 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |        5.584379 |    0.15 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |        8.117666 |    0.11 |     6 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  3  
+5  9  6  7  
+12 8  14 11 
+0  10 13 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, right, down, right, up, left, up, left, up]
+It took parallel tree 14.658105ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, right, down, right, up, left, up, left, up]
+It took parallel 14ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[up, right, down, right, up, left, up, left, up]
+It took sequential 2.399404ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |        2.399404 |    1.00 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |       14.520371 |    0.17 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       14.658105 |    0.16 |     9 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  3  7  
+5  6  10 2  
+8  13 9  11 
+12 14 0  15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, right, up, left, down, left, left, up]
+It took parallel tree 45.390842ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, right, up, left, down, left, left, up]
+It took parallel 37ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 11 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, right, up, left, down, left, left, up]
+It took sequential 17.051366ms to solve.
+
+Solution summary for puzzle shuffled 30 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       30 | sequential |       17.051366 |    1.00 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 |   parallel |       37.772063 |    0.45 |    11 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       30 | tree solve |       45.390842 |    0.38 |    11 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+1  2  0  7  
+4  5  3  6  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, left]
+It took parallel tree 5.665507ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, left]
+It took parallel 3ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[down, right, up, left, left, left]
+It took sequential 0.589328ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        0.589328 |    1.00 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        3.856140 |    0.15 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |        5.665507 |    0.10 |     6 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+1  2  6  3  
+4  9  5  7  
+8  10 0  11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, left, left]
+It took parallel tree 7.244762ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, left, left]
+It took parallel 5ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, up, right, up, left, left]
+It took sequential 0.865935ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        0.865935 |    1.00 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        5.569015 |    0.16 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |        7.244762 |    0.12 |     6 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+1  2  6  3  
+4  5  0  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 3 moves to solve the puzzle.
+The moves were: 
+[up, left, left]
+It took parallel tree 4.903537ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 3 moves to solve the puzzle.
+The moves were: 
+[up, left, left]
+It took parallel 2ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 3 moves to solve the puzzle.
+The moves were: 
+[up, left, left]
+It took sequential 0.23896ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        0.238960 |    1.00 |     3 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        2.811670 |    0.08 |     3 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |        4.903537 |    0.05 |     3 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  3  
+8  5  6  7  
+0  12 14 9  
+13 10 15 11 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[right, right, right, down, left, left, up, right, down, left, left, up, up, up]
+It took parallel tree 143.275445ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[right, right, right, down, left, left, up, right, down, left, left, up, up, up]
+It took parallel 213ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 14 moves to solve the puzzle.
+The moves were: 
+[right, right, right, down, left, left, up, right, down, left, left, up, up, up]
+It took sequential 222.280859ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |      222.280859 |    1.00 |    14 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |      213.871098 |    1.04 |    14 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |      143.275445 |    1.55 |    14 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+5  2  6  3  
+1  4  7  0  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, left, left, down, right, up, left]
+It took parallel tree 8.032929ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, left, left, down, right, up, left]
+It took parallel 9ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 8 moves to solve the puzzle.
+The moves were: 
+[left, up, left, left, down, right, up, left]
+It took sequential 2.494823ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        2.494823 |    1.00 |     8 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        9.985250 |    0.25 |     8 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |        8.032929 |    0.31 |     8 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+5  2  0  3  
+1  4  6  7  
+8  9  10 11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, up, left]
+It took parallel tree 5.261542ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, up, left]
+It took parallel 4ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 6 moves to solve the puzzle.
+The moves were: 
+[left, left, down, right, up, left]
+It took sequential 0.996184ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        0.996184 |    1.00 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        4.757766 |    0.21 |     6 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |        5.261542 |    0.19 |     6 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  3  7  
+5  6  0  11 
+8  9  2  10 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, right, up, up, left, down, left, left, up]
+It took parallel tree 12.920895ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, right, up, up, left, down, left, left, up]
+It took parallel 14ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 9 moves to solve the puzzle.
+The moves were: 
+[down, right, up, up, left, down, left, left, up]
+It took sequential 3.613356ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        3.613356 |    1.00 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |       14.398818 |    0.25 |     9 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |       12.920895 |    0.28 |     9 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  3  
+8  9  5  7  
+12 11 14 15 
+0  13 6  10 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[right, right, up, left, down, right, right, up, left, left, up, right, down, down, left, left, up, up, up]
+It took parallel tree 3241.193371ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[right, up, right, down, left, up, up, right, down, down, right, up, left, down, left, left, up, up, up]
+It took parallel 6344ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 19 moves to solve the puzzle.
+The moves were: 
+[right, up, right, down, left, up, up, right, down, down, right, up, left, down, left, left, up, up, up]
+It took sequential 13376.681134ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |    13376.681134 |    1.00 |    19 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |     6344.087844 |    2.11 |    19 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |     3241.193371 |    4.13 |    19 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+5  2  6  3  
+1  4  7  11 
+8  9  14 10 
+0  12 13 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 13 moves to solve the puzzle.
+The moves were: 
+[right, right, up, right, up, left, up, left, left, down, right, up, left]
+It took parallel tree 75.427952ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 13 moves to solve the puzzle.
+The moves were: 
+[right, right, up, right, up, left, up, left, left, down, right, up, left]
+It took parallel 77ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 13 moves to solve the puzzle.
+The moves were: 
+[right, right, up, right, up, left, up, left, left, down, right, up, left]
+It took sequential 88.197855ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |       88.197855 |    1.00 |    13 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |       77.533338 |    1.14 |    13 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |       75.427952 |    1.17 |    13 
+------+----------+------------+-----------------+---------+--------
+
+
+Puzzle to be solved:
+4  1  2  3  
+8  6  10 7  
+9  0  5  11 
+12 13 14 15 
+
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up, up]
+It took parallel tree 16.292318ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up, up]
+It took parallel 7ms to solve.
+0  1  2  3  
+4  5  6  7  
+8  9  10 11 
+12 13 14 15 
+
+It took 7 moves to solve the puzzle.
+The moves were: 
+[right, up, left, down, left, up, up]
+It took sequential 1.41841ms to solve.
+
+Solution summary for puzzle shuffled 40 times:
+
+ size | shuffles | solve type | solve time (ms) | speedup | # moves 
+------+----------+------------+-----------------+---------+--------
+  4x4 |       40 | sequential |        1.418410 |    1.00 |     7 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 |   parallel |        7.804422 |    0.18 |     7 
+------+----------+------------+-----------------+---------+--------
+
+  4x4 |       40 | tree solve |       16.292318 |    0.09 |     7 
+------+----------+------------+-----------------+---------+--------
+
+

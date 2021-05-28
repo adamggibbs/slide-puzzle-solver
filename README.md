@@ -37,7 +37,7 @@ Our brute force sequential solver is really good at solving small puzzles with s
 ## Comparison of Solver Performance
 We assess performance on two accounts: runtime and memory use. In terms of runtime the parallel tree solver is by far the fastest solver. The sequential and parallel solvers are the second and third fastest solver. The sequential solver beats the parallel solver for small puzzles and the parallel solver only starts to beat the sequential solver for much larger solutions. The pruning methods are then much slower than the non pruning methods but for their runtime performance, the two combiner solution is fastest, the one combiner solution is second, and the sequential method is the slowest. The pruning methods theoretically perform well when we consider memory use. The non pruning methods run out of memory since the queues get too large for complex solutions but the pruning methods don't have this issue for most puzzles. They did not have memory issues for any of the puzzles that we tested.
 
-## Components of the Repository (Add other files I don't have listed with explanations)
+## Components of the Repository
 A list of all java classes in the repository and a description of their contents and functionality. A brief explanation of how to use these classes is also included.
 (To Ben and Scott: Write a description of your files and programs here. I say we do somewhat of a bulleted format but that's not 100% necessary)
 #### Puzzle.java

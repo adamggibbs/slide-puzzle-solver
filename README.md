@@ -68,9 +68,50 @@ A list of all java classes in the repository and a description of their contents
   - Used in Solver.parallelTreeSolve as its parallel task
   - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
   - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
+
 #### Main.java (Ben will do this)
   - Contains only a main method to test out the functionality of 
     Puzzle and Solver
+    
+#### PuzzlePruning.java
+  - Holds the 2D array with position of puzzle pieces
+  - Methods for moving pieces on the board. All moves are realtive to the open spot
+    so "move up" means the open space moves up even tho this visually appears as the 
+    physical piece above the open space moving down into the open space.
+  - Method to shuffle the board to begin solving the puzzle
+  - Methods to print the board and the previous moves that have been done to the board
+  
+#### SolverPruning.java
+  - Contains methods involved with solving the puzzle
+  - Has method that solves the puzzle with a brute force method
+  - Has method that solves the puzzle with a brute force method in parallel with small parallel tasks
+  - Has method that solves the puzzle with a brute force method by dividing the BFS tree into multiple smaller trees to be run in parallel
+  - Has method that prints the moves to the optimal solution of the puzzle after being solved
+  - All methods are static so they can be called without an instance of the Solver class via Solver.<i>solve-method()</i>
+
+#### NextStateTaskPruning.java
+  - Runnable task for parallel solver
+  - Used in Solver.parallelSolve() as its parallel task
+  - Gets a puzzle and checks if it's solved, then adds its children to the queue of states to be checked
+
+#### CombinerTask.java
+  - Runnable task for parallel tree solver
+  - Used in Solver.parallelTreeSolve as its parallel task
+  - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
+  - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
+
+#### CombinerTaskParallelV2.java
+  - Runnable task for parallel tree solver
+  - Used in Solver.parallelTreeSolve as its parallel task
+  - Takes in a puzzle and runs sequential solve with the given puzzle as the initial puzzle
+  - Either sets found solution as the global solved puzzle or thread is interrupted and it does nothing
+
+#### MainPruning.java
+  - Contains only a main method to test out the functionality of 
+    Puzzle and Solver
+    
+#### Output Files for Pruning
+  - Tests run for pruning files
     
     
 ## How to compile and run on the command line: (Ben will do this)

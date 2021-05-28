@@ -120,6 +120,9 @@ A list of all java classes in the repository and a description of their contents
 #### 4x4InitialTester.sh
   - A script which runs the baseline `Main` on 4x4 puzzles multiple times
     with different shuffles
+    
+#### PruningTester.sh
+  - Shell script that runs trials for 3x3 and 4x4 puzzles with 30 and 40 shuffles and prints results to `outputPruningTest.txt`.
 
 #### Output Files for Non-Pruning Solutions
     - Output for non-pruning solutions include sequential, parallel, and parallel tree solutions
